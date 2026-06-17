@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuickProtect — Privacy Policy</title>
+<meta name="description" content="QuickProtect privacy policy. QuickProtect collects no personal data — everything stays on your device and your network.">
+<link rel="canonical" href="https://quickprotect.app/support/privacy.html">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<style>
+  :root {
+    --blue: #0a84ff;
+    --blue-dark: #0a4da0;
+    --ink: #16202b;
+    --muted: #5b6b7a;
+    --surface: #f4f8fc;
+    --card: #ffffff;
+    --line: rgba(10,132,255,0.14);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--surface);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .nav {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800;
+    letter-spacing: -0.3px; color: var(--ink); font-size: 17px; }
+  .brand:hover { text-decoration: none; }
+  .brand img { width: 28px; height: 28px; border-radius: 7px; }
+  main { max-width: 720px; margin: 0 auto; padding: 36px 20px 56px; }
+  .back { display: inline-block; margin-bottom: 22px; font-weight: 600; font-size: 14px; }
+  h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.6px; margin: 0 0 4px; }
+  .updated { color: var(--muted); font-size: 14px; margin: 0 0 28px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 16px; padding: 8px 28px 16px;
+    box-shadow: 0 1px 3px rgba(15,76,145,0.05);
+  }
+  h2 { font-size: 18px; font-weight: 700; margin: 28px 0 8px; }
+  p { margin: 0 0 14px; color: #2a3a48; font-size: 15px; }
+  ul { margin: 0 0 14px; padding-left: 20px; }
+  li { margin: 0 0 10px; color: #2a3a48; font-size: 15px; }
+  .lede { font-size: 16px; }
+  strong { color: var(--ink); }
+  footer {
+    border-top: 1px solid var(--line); text-align: center;
+    color: var(--muted); font-size: 14px; padding: 28px 20px 52px; margin-top: 40px;
+  }
+  footer .mail { display: block; margin: 4px 0 12px; font-weight: 600; }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="../"><img src="../assets/icon.png" alt="QuickProtect"> QuickProtect</a>
+</nav>
+
+<main>
+  <a class="back" href="./">← Back to Support</a>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: June 4, 2026</p>
+
+  <div class="card">
+    <p class="lede">QuickProtect ("the app") is a macOS menu-bar application for viewing live camera feeds from your own UniFi&nbsp;Protect controller. Your privacy matters, and this policy explains exactly what the app does and does not do with your data.</p>
+
+    <h2>Summary</h2>
+    <p><strong>QuickProtect does not collect, store, transmit, or share any personal data.</strong> There are no analytics, no tracking, no advertising, no user accounts, and no servers operated by the developer. The app talks only to the UniFi&nbsp;Protect controller you configure, on your own network.</p>
+
+    <h2>Information stored on your device</h2>
+    <p>The app stores the following locally on your Mac, solely so it can function. None of it is ever sent to the developer or any third party:</p>
+    <ul>
+      <li><strong>Controller connection details</strong> — the IP address and API key for your UniFi&nbsp;Protect controller, and (optionally) a local admin username and password used for PTZ camera control. These credentials are stored securely in the <strong>macOS Keychain</strong> and are used only to connect to your controller.</li>
+      <li><strong>App preferences</strong> — settings such as themes, camera order, per-display layouts, and your keyboard shortcut, stored in standard macOS preferences.</li>
+    </ul>
+
+    <h2>Network connections</h2>
+    <p>QuickProtect connects <strong>only to the UniFi&nbsp;Protect controller you specify</strong>, over HTTPS and RTSP/RTSPS, to list cameras and stream video. This connection is made on your local network (or through a VPN you set up yourself). The app does not connect to any developer-operated servers and does not transmit your data anywhere else.</p>
+
+    <h2>Data collection</h2>
+    <p>None. QuickProtect does not collect or process any personal data, usage data, diagnostics, or identifiers.</p>
+
+    <h2>Third parties</h2>
+    <p>QuickProtect contains no third-party analytics, advertising, or tracking SDKs, and does not share any data with third parties.</p>
+
+    <h2>Children's privacy</h2>
+    <p>The app is not directed at children and collects no data from anyone.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>Any updates to this policy will be posted at this URL.</p>
+
+    <h2>Contact</h2>
+    <p>If you have questions about this privacy policy, contact <a href="mailto:hello@quickprotect.app">hello@quickprotect.app</a>.</p>
+  </div>
+</main>
+
+<footer>
+  <a class="mail" href="mailto:hello@quickprotect.app">hello@quickprotect.app</a>
+  <div>© 2026 Christian Bartels</div>
+</footer>
+</body>
+</html>

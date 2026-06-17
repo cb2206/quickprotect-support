@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuickProtect — Support</title>
+<meta name="description" content="Support and help for QuickProtect, the macOS menu-bar app for viewing live UniFi Protect cameras.">
+<link rel="canonical" href="https://quickprotect.app/support/">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<style>
+  :root {
+    --blue: #0a84ff;
+    --blue-dark: #0a4da0;
+    --ink: #16202b;
+    --muted: #5b6b7a;
+    --surface: #f4f8fc;
+    --card: #ffffff;
+    --line: rgba(10,132,255,0.14);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--surface);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .nav {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800;
+    letter-spacing: -0.3px; color: var(--ink); font-size: 17px; }
+  .brand:hover { text-decoration: none; }
+  .brand img { width: 28px; height: 28px; border-radius: 7px; }
+  .hero {
+    background: linear-gradient(165deg, var(--blue) 0%, var(--blue-dark) 100%);
+    color: #fff; text-align: center; padding: 40px 20px 44px;
+  }
+  .hero .icon { width: 76px; height: 76px; border-radius: 18px; display: block;
+    margin: 0 auto 16px; box-shadow: 0 14px 34px rgba(8,40,80,0.4); }
+  .hero h1 { margin: 0 0 6px; font-size: 30px; font-weight: 800; letter-spacing: -0.6px; }
+  .hero .subtitle { margin: 0; font-size: 16px; font-weight: 500; opacity: 0.93; }
+  main { max-width: 720px; margin: 0 auto; padding: 28px 20px 56px; }
+  .back { display: inline-block; margin-bottom: 22px; font-weight: 600; font-size: 14px; }
+  footer {
+    border-top: 1px solid var(--line); text-align: center;
+    color: var(--muted); font-size: 14px; padding: 28px 20px 52px;
+  }
+  footer .links { margin-bottom: 10px; }
+  footer .links a { margin: 0 8px; font-weight: 600; }
+  footer .mail { display: block; margin: 4px 0 12px; }
+  footer .copy { font-size: 13px; }
+  section { margin-bottom: 28px; }
+  .sec-h {
+    font-size: 13px; font-weight: 800; letter-spacing: 1.4px;
+    text-transform: uppercase; color: var(--blue-dark); margin: 0 0 12px;
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 16px; padding: 22px 24px;
+    box-shadow: 0 1px 3px rgba(15,76,145,0.05);
+  }
+  .faq { border-bottom: 1px solid var(--line); padding: 16px 0; }
+  .faq:first-child { padding-top: 0; }
+  .faq:last-child { border-bottom: 0; padding-bottom: 0; }
+  .faq h3 { margin: 0 0 6px; font-size: 16px; font-weight: 700; }
+  .faq p { margin: 0; color: var(--muted); font-size: 15px; }
+  .contact a.email { font-weight: 700; font-size: 18px; }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="../"><img src="../assets/icon.png" alt="QuickProtect"> QuickProtect</a>
+</nav>
+
+<header class="hero">
+  <img class="icon" src="../assets/icon.png" alt="QuickProtect app icon">
+  <h1>QuickProtect Support</h1>
+  <p class="subtitle">Live UniFi Protect cameras in your menu bar — help &amp; answers</p>
+</header>
+
+<main>
+  <a class="back" href="../">← Back to QuickProtect</a>
+
+  <section class="contact">
+    <h2 class="sec-h">Contact</h2>
+    <div class="card">
+      <p style="margin:0 0 8px;">Questions, bugs, or feature ideas? Email us and we'll get back to you, usually within a couple of days.</p>
+      <a class="email" href="mailto:hello@quickprotect.app">hello@quickprotect.app</a>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-h">Getting started</h2>
+    <div class="card">
+      <div class="faq">
+        <h3>What does QuickProtect do?</h3>
+        <p>QuickProtect is a lightweight macOS menu-bar app for viewing live camera feeds from your own UniFi&nbsp;Protect controller. Click the menu-bar icon to see all your cameras in a resizable grid — no browser or separate app needed. Click a camera to focus it, press <strong>F</strong> for fullscreen, and use the arrow keys to pan and tilt PTZ cameras.</p>
+      </div>
+      <div class="faq">
+        <h3>How do I connect to my controller?</h3>
+        <p>Open <strong>Settings</strong>, enter your controller's local <strong>IP address</strong> and an <strong>API key</strong>, and your cameras appear in the grid. Generate the API key in your UniFi&nbsp;Protect controller's settings (Control Plane → Integrations / API). The key is stored securely in the macOS Keychain.</p>
+      </div>
+      <div class="faq">
+        <h3>What do I need?</h3>
+        <p>A Mac running macOS 13 or later, a UniFi&nbsp;Protect controller reachable on your local network, and an Integration API key from that controller. For PTZ control you'll also need a local admin account on the controller.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-h">PTZ &amp; controls</h2>
+    <div class="card">
+      <div class="faq">
+        <h3>How do I control a PTZ camera?</h3>
+        <p>Focus a PTZ-capable camera (it shows a directional ↔ badge), then pan and tilt with the arrow keys or the on-screen pad — hold to move continuously, release to stop. PTZ requires a local admin username and password under <strong>Settings → PTZ</strong>.</p>
+      </div>
+      <div class="faq">
+        <h3>Why does PTZ need a separate login from the API key?</h3>
+        <p>The Integration API (your API key) handles the camera list and live streaming but does not support PTZ. PTZ control uses the classic Protect API, which authenticates with a local admin account. Both credentials are stored in the macOS Keychain.</p>
+      </div>
+      <div class="faq">
+        <h3>What are layout profiles and floating windows?</h3>
+        <p><strong>Layout profiles</strong> let you save different camera arrangements and window sizes and switch between them. <strong>Floating windows</strong> let you pin one or more cameras as always-on-top windows that stay visible while you work in other apps.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-h">Troubleshooting</h2>
+    <div class="card">
+      <div class="faq">
+        <h3>No cameras appear after I enter my details.</h3>
+        <p>Confirm the controller's IP address is correct and reachable from your Mac (try opening <code>https://&lt;controller-ip&gt;</code> in a browser on the same network), and that the API key is valid and hasn't been revoked. QuickProtect needs to reach the controller directly on the local network.</p>
+      </div>
+      <div class="faq">
+        <h3>Can I use QuickProtect when I'm away from home?</h3>
+        <p>Yes — connect to your home network first with a VPN, then QuickProtect works as if you were at home. <a href="https://tailscale.com/" target="_blank" rel="noopener">Tailscale</a> (with subnet routing) and UniFi Teleport both work well. UniFi Protect has no public cloud streaming API, so a route to your controller's local IP is required.</p>
+      </div>
+      <div class="faq">
+        <h3>A stream looks frozen or won't load.</h3>
+        <p>Try clicking another camera and back, or quitting and reopening QuickProtect to re-establish the RTSP session. If a single camera never loads, check that it's online in UniFi&nbsp;Protect and that RTSP/RTSPS streaming is enabled for it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-h">Privacy</h2>
+    <div class="card">
+      <p style="margin:0;">QuickProtect collects no personal data — no account, no analytics, no ads, and no developer-operated servers. The app talks only to the controller you configure, and your video never leaves your network. Read the full <a href="privacy.html">privacy policy</a>.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-h">Trademarks</h2>
+    <div class="card">
+      <p style="margin:0;">QuickProtect is an independent app and is not affiliated with, authorized, or endorsed by Ubiquiti&nbsp;Inc. UniFi and UniFi&nbsp;Protect are trademarks of Ubiquiti&nbsp;Inc., used here only to describe compatibility.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="links">QuickProtect · Support · <a href="privacy.html">Privacy Policy</a></div>
+  <a class="mail" href="mailto:hello@quickprotect.app">hello@quickprotect.app</a>
+  <div class="copy">© 2026 Christian Bartels</div>
+</footer>
+</body>
+</html>

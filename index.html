@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuickProtect — Live UniFi Protect cameras in your Mac's menu bar</title>
+<meta name="description" content="QuickProtect puts your UniFi Protect cameras one click away in your Mac's menu bar. Live grid, focus, fullscreen, PTZ control — all local, all private. No cloud, no account, no tracking.">
+<meta property="og:title" content="QuickProtect">
+<meta property="og:description" content="Live UniFi Protect cameras in your Mac's menu bar. Local, private, one click away.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/icon.png">
+<link rel="canonical" href="https://quickprotect.app/">
+<link rel="icon" type="image/png" href="assets/icon.png">
+<style>
+  :root {
+    --blue: #0a84ff;
+    --blue-dark: #0a4da0;
+    --ink: #16202b;
+    --muted: #5b6b7a;
+    --surface: #f4f8fc;
+    --card: #ffffff;
+    --line: rgba(10,132,255,0.14);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--surface);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* top nav */
+  .nav {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800;
+    letter-spacing: -0.3px; color: var(--ink); font-size: 17px; }
+  .brand img { width: 28px; height: 28px; border-radius: 7px; }
+  .navright { display: flex; align-items: center; gap: 16px; }
+  .navlink { font-weight: 600; font-size: 14px; color: var(--blue-dark); }
+
+  /* hero */
+  .hero {
+    background: linear-gradient(165deg, var(--blue) 0%, var(--blue-dark) 100%);
+    color: #fff; text-align: center; padding: 64px 20px 72px;
+    position: relative; overflow: hidden;
+  }
+  .hero .icon {
+    width: 116px; height: 116px; border-radius: 26px; display: block; margin: 0 auto 22px;
+    box-shadow: 0 20px 50px rgba(8,40,80,0.45); }
+  .hero h1 { margin: 0 0 6px; font-size: 38px; font-weight: 800; letter-spacing: -0.8px; }
+  .hero .subtitle { margin: 0 0 18px; font-size: 19px; font-weight: 600; opacity: 0.95; }
+  .hero .tagline { max-width: 580px; margin: 0 auto 30px; font-size: 17px; opacity: 0.92; }
+
+  /* download buttons */
+  .badgewrap { display: inline-flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .appstore {
+    display: inline-flex; align-items: center; gap: 11px;
+    background: #0c0c0c; color: #fff; border-radius: 11px;
+    padding: 10px 18px; text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.25); user-select: none;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .appstore:hover { text-decoration: none; transform: translateY(-1px); box-shadow: 0 12px 28px rgba(8,40,80,0.4); }
+  .appstore:active { transform: translateY(0); }
+  .appstore svg { width: 26px; height: 26px; fill: #fff; }
+  .appstore .small { font-size: 11px; line-height: 1; opacity: 0.85; }
+  .appstore .big { font-size: 19px; font-weight: 600; line-height: 1.15; letter-spacing: -0.2px; }
+  .ghbtn {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: rgba(255,255,255,0.14); color: #fff; border-radius: 11px;
+    padding: 10px 18px; font-weight: 600; font-size: 15px;
+    border: 1px solid rgba(255,255,255,0.35);
+    transition: transform .12s ease, background .12s ease;
+  }
+  .ghbtn:hover { text-decoration: none; transform: translateY(-1px); background: rgba(255,255,255,0.22); }
+  .ghbtn svg { width: 20px; height: 20px; fill: #fff; }
+
+  main { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+  .pitch { font-size: 18px; color: #25323f; max-width: 700px;
+    margin: 44px auto 8px; text-align: center; }
+
+  .features { display: grid; gap: 18px; margin: 40px 0 8px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  .feature {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+    padding: 24px 24px 8px; box-shadow: 0 1px 3px rgba(15,76,145,0.05);
+  }
+  .feature h2 {
+    font-size: 13px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--blue-dark); margin: 0 0 14px;
+  }
+  .feature ul { list-style: none; margin: 0; padding: 0; }
+  .feature li { position: relative; padding: 0 0 16px 26px; font-size: 15px; color: #2a3a48; }
+  .feature li::before {
+    content: ""; position: absolute; left: 2px; top: 7px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--blue); box-shadow: 0 0 0 4px rgba(10,132,255,0.16);
+  }
+
+  .shots { margin: 56px 0 8px; }
+  .shots h2 { text-align: center; font-size: 24px; font-weight: 800;
+    letter-spacing: -0.4px; margin: 0 0 26px; color: var(--ink); }
+  .gallery {
+    display: flex; gap: 18px; overflow-x: auto; padding: 8px 4px 22px;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+  }
+  .gallery img {
+    width: 420px; max-width: 86vw; flex: 0 0 auto; border-radius: 18px;
+    border: 1px solid var(--line); scroll-snap-align: center;
+    box-shadow: 0 14px 36px rgba(15,76,145,0.16); background: #fff;
+  }
+
+  /* changelog */
+  .changelog { margin: 56px 0 8px; }
+  .changelog h2 { text-align: center; font-size: 24px; font-weight: 800;
+    letter-spacing: -0.4px; margin: 0 0 26px; color: var(--ink); }
+  .release {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+    padding: 22px 24px 8px; margin: 0 auto 18px; max-width: 700px;
+    box-shadow: 0 1px 3px rgba(15,76,145,0.05);
+  }
+  .release-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 12px; flex-wrap: wrap; margin: 0 0 14px;
+  }
+  .release-head .ver { font-size: 17px; font-weight: 800; letter-spacing: -0.2px; color: var(--blue-dark); }
+  .release-head .date { font-size: 13px; font-weight: 600; color: var(--muted); }
+  .release ul { list-style: none; margin: 0; padding: 0; }
+  .release li { position: relative; padding: 0 0 16px 26px; font-size: 15px; color: #2a3a48; }
+  .release li::before {
+    content: ""; position: absolute; left: 2px; top: 7px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--blue); box-shadow: 0 0 0 4px rgba(10,132,255,0.16);
+  }
+
+  .fineprint { max-width: 700px; margin: 40px auto 0; }
+  .fineprint h2 { font-size: 13px; font-weight: 800; letter-spacing: 1.2px;
+    text-transform: uppercase; color: var(--blue-dark); margin: 0 0 8px; }
+  .fineprint p { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+
+  footer {
+    margin-top: 56px; border-top: 1px solid var(--line);
+    text-align: center; color: var(--muted); font-size: 14px;
+    padding: 30px 20px 56px;
+  }
+  footer .links { margin-bottom: 12px; }
+  footer .links a { margin: 0 10px; font-weight: 600; }
+  footer .mail { display: block; margin: 6px 0 14px; }
+
+  @media (max-width: 560px) {
+    .hero h1 { font-size: 31px; }
+    .hero { padding: 48px 18px 56px; }
+  }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <span class="brand"><img src="assets/icon.png" alt="QuickProtect"> QuickProtect</span>
+  <span class="navright">
+    <a class="navlink" href="#changelog">What's new</a>
+    <a class="navlink" href="support/">Support</a>
+  </span>
+</nav>
+
+<header class="hero">
+  <img class="icon" src="assets/icon.png" alt="QuickProtect app icon">
+  <h1>QuickProtect</h1>
+  <p class="subtitle">Live cameras in your Mac's menu bar</p>
+  <p class="tagline">Your UniFi&nbsp;Protect cameras, one click from the menu bar — a live grid, fullscreen, and PTZ control, all on your local network. No cloud, no account, no tracking.</p>
+  <div class="badgewrap">
+    <!-- TODO: replace href with the real App Store product URL once the app is live -->
+    <a class="appstore" href="https://apps.apple.com/app/quickprotect" target="_blank" rel="noopener" aria-label="Download QuickProtect on the App Store">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.36 12.78c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.29 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.65zM14.13 6.04c.64-.78 1.07-1.85.95-2.92-.92.04-2.03.61-2.69 1.38-.59.68-1.11 1.78-.97 2.83 1.03.08 2.07-.52 2.71-1.29z"/></svg>
+      <span><span class="small">Download on the</span><br><span class="big">App Store</span></span>
+    </a>
+    <a class="ghbtn" href="https://github.com/cb2206/QuickProtect/releases" target="_blank" rel="noopener" aria-label="Download QuickProtect from GitHub">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1-.02-1.96-3.2.69-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+      <span>Free DMG on GitHub</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <p class="pitch">Click the menu-bar icon to see every camera in a live grid. Click one to focus it, press <strong>F</strong> for fullscreen, and double-click to open it in Protect. QuickProtect talks directly to your controller over RTSP/RTSPS on your local network — your video never leaves your network.</p>
+
+  <div class="features">
+    <div class="feature">
+      <h2>Live cameras</h2>
+      <ul>
+        <li>Every camera in a live grid, right from the menu bar.</li>
+        <li>One-click focus and fullscreen viewing.</li>
+        <li>Zoom and pan within any feed.</li>
+        <li>Double-click to open a camera in Protect.</li>
+      </ul>
+    </div>
+    <div class="feature">
+      <h2>Control &amp; layout</h2>
+      <ul>
+        <li>PTZ pan and tilt with the arrow keys or an on-screen pad.</li>
+        <li>Named layout profiles for different rooms or scenes.</li>
+        <li>Pinnable, always-on-top floating camera windows.</li>
+        <li>Resizable window, drag to reorder, per-camera size and hide.</li>
+      </ul>
+    </div>
+    <div class="feature">
+      <h2>Private by design</h2>
+      <ul>
+        <li>Direct local connection — no cloud, no account, no tracking.</li>
+        <li>Credentials stored securely in the macOS Keychain.</li>
+        <li>Light, dark, and automatic themes with accent colors.</li>
+        <li>Global shortcut, launch at login, free and open-source (MIT).</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="shots">
+    <h2>A look inside</h2>
+    <div class="gallery">
+      <img src="assets/shots/qp-1.png" loading="lazy" alt="QuickProtect screenshot 1">
+      <img src="assets/shots/qp-2.png" loading="lazy" alt="QuickProtect screenshot 2">
+    </div>
+  </section>
+
+  <section class="changelog" id="changelog">
+    <h2>What's new</h2>
+    <div class="release">
+      <div class="release-head">
+        <span class="ver">QuickProtect 1.2</span>
+        <span class="date">June 2026</span>
+      </div>
+      <ul>
+        <li>Live camera grid in the menu bar, with one-click focus and fullscreen.</li>
+        <li>PTZ control with the keyboard or an on-screen pad.</li>
+        <li>Named layout profiles, each with its own window size and camera arrangement.</li>
+        <li>Pinnable, always-on-top floating camera windows.</li>
+        <li>Zoom and pan within a feed, drag to reorder, per-camera size and hide.</li>
+        <li>Light, dark, and automatic themes with accent colors, a global show/hide shortcut, and launch at login.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="fineprint">
+    <h2>Compatibility</h2>
+    <p>QuickProtect is a third-party client that works with a UniFi&nbsp;Protect controller on your local network. You'll need an Integration API key from your controller for the camera list and live streams, and (optionally, for PTZ control) a local admin account. Away from home, connect to your network first with a VPN such as Tailscale or UniFi Teleport.</p>
+    <p>QuickProtect is an independent app and is not affiliated with, authorized, or endorsed by Ubiquiti&nbsp;Inc. UniFi and UniFi&nbsp;Protect are trademarks of Ubiquiti&nbsp;Inc., used here only to describe compatibility.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="links">
+    <a href="support/">Support</a>
+    <a href="support/privacy.html">Privacy Policy</a>
+    <a href="https://github.com/cb2206/QuickProtect" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <a class="mail" href="mailto:hello@quickprotect.app">hello@quickprotect.app</a>
+  <div>© 2026 Christian Bartels</div>
+</footer>
+</body>
+</html>
