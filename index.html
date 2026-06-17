@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>QuickProtect — Live UniFi Protect cameras in your Mac's menu bar</title>
-<meta name="description" content="QuickProtect puts your UniFi Protect cameras one click away in your Mac's menu bar. Live grid, focus, fullscreen, PTZ control — all local, all private. No cloud, no account, no tracking.">
+<title>QuickProtect</title>
+<meta name="description" id="metaDesc" content="">
 <meta property="og:title" content="QuickProtect">
 <meta property="og:description" content="Live UniFi Protect cameras in your Mac's menu bar. Local, private, one click away.">
 <meta property="og:type" content="website">
@@ -49,6 +49,19 @@
   .brand img { width: 28px; height: 28px; border-radius: 7px; }
   .navright { display: flex; align-items: center; gap: 16px; }
   .navlink { font-weight: 600; font-size: 14px; color: var(--blue-dark); }
+  .picker { position: relative; }
+  .picker select {
+    appearance: none; -webkit-appearance: none;
+    font: inherit; font-size: 14px; font-weight: 600; color: var(--blue-dark);
+    background: rgba(10,132,255,0.08); border: 1px solid var(--line);
+    border-radius: 999px; padding: 7px 30px 7px 14px; cursor: pointer;
+  }
+  .picker::after {
+    content: ""; position: absolute; right: 13px; top: 50%;
+    width: 7px; height: 7px; border-right: 2px solid var(--blue-dark);
+    border-bottom: 2px solid var(--blue-dark); transform: translateY(-65%) rotate(45deg);
+    pointer-events: none;
+  }
 
   /* hero */
   .hero {
@@ -163,6 +176,7 @@
   @media (max-width: 560px) {
     .hero h1 { font-size: 31px; }
     .hero { padding: 48px 18px 56px; }
+    .navright { gap: 10px; }
   }
 </style>
 </head>
@@ -170,64 +184,37 @@
 <nav class="nav">
   <span class="brand"><img src="assets/icon.png" alt="QuickProtect"> QuickProtect</span>
   <span class="navright">
-    <a class="navlink" href="#changelog">What's new</a>
-    <a class="navlink" href="support/">Support</a>
+    <a class="navlink" id="nav-changelog" href="#changelog">What's new</a>
+    <a class="navlink" id="nav-support" href="support/">Support</a>
+    <span class="picker"><select id="lang" aria-label="Language"></select></span>
   </span>
 </nav>
 
 <header class="hero">
   <img class="icon" src="assets/icon.png" alt="QuickProtect app icon">
   <h1>QuickProtect</h1>
-  <p class="subtitle">Live cameras in your Mac's menu bar</p>
-  <p class="tagline">Your UniFi&nbsp;Protect cameras, one click from the menu bar — a live grid, fullscreen, and PTZ control, all on your local network. No cloud, no account, no tracking.</p>
+  <p class="subtitle" id="h-subtitle"></p>
+  <p class="tagline" id="h-tagline"></p>
   <div class="badgewrap">
     <!-- TODO: replace href with the real App Store product URL once the app is live -->
     <a class="appstore" href="https://apps.apple.com/app/quickprotect" target="_blank" rel="noopener" aria-label="Download QuickProtect on the App Store">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.36 12.78c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.29 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.65zM14.13 6.04c.64-.78 1.07-1.85.95-2.92-.92.04-2.03.61-2.69 1.38-.59.68-1.11 1.78-.97 2.83 1.03.08 2.07-.52 2.71-1.29z"/></svg>
-      <span><span class="small">Download on the</span><br><span class="big">App Store</span></span>
+      <span><span class="small" id="b-small">Download on the</span><br><span class="big">App Store</span></span>
     </a>
     <a class="ghbtn" href="https://github.com/cb2206/QuickProtect/releases" target="_blank" rel="noopener" aria-label="Download QuickProtect from GitHub">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1-.02-1.96-3.2.69-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
-      <span>Free DMG on GitHub</span>
+      <span id="gh-label">Free DMG on GitHub</span>
     </a>
   </div>
 </header>
 
 <main>
-  <p class="pitch">Click the menu-bar icon to see every camera in a live grid. Click one to focus it, press <strong>F</strong> for fullscreen, and double-click to open it in Protect. QuickProtect talks directly to your controller over RTSP/RTSPS on your local network — your video never leaves your network.</p>
+  <p class="pitch" id="m-pitch"></p>
 
-  <div class="features">
-    <div class="feature">
-      <h2>Live cameras</h2>
-      <ul>
-        <li>Every camera in a live grid, right from the menu bar.</li>
-        <li>One-click focus and fullscreen viewing.</li>
-        <li>Zoom and pan within any feed.</li>
-        <li>Double-click to open a camera in Protect.</li>
-      </ul>
-    </div>
-    <div class="feature">
-      <h2>Control &amp; layout</h2>
-      <ul>
-        <li>PTZ pan and tilt with the arrow keys or an on-screen pad.</li>
-        <li>Named layout profiles for different rooms or scenes.</li>
-        <li>Pinnable, always-on-top floating camera windows.</li>
-        <li>Resizable window, drag to reorder, per-camera size and hide.</li>
-      </ul>
-    </div>
-    <div class="feature">
-      <h2>Private by design</h2>
-      <ul>
-        <li>Direct local connection — no cloud, no account, no tracking.</li>
-        <li>Credentials stored securely in the macOS Keychain.</li>
-        <li>Light, dark, and automatic themes with accent colors.</li>
-        <li>Global shortcut, launch at login, free and open-source (MIT).</li>
-      </ul>
-    </div>
-  </div>
+  <div class="features" id="m-features"></div>
 
   <section class="shots">
-    <h2>A look inside</h2>
+    <h2 id="m-shotsH"></h2>
     <div class="gallery">
       <img src="assets/shots/qp-1.png" loading="lazy" alt="QuickProtect screenshot 1">
       <img src="assets/shots/qp-2.png" loading="lazy" alt="QuickProtect screenshot 2">
@@ -235,38 +222,384 @@
   </section>
 
   <section class="changelog" id="changelog">
-    <h2>What's new</h2>
-    <div class="release">
-      <div class="release-head">
-        <span class="ver">QuickProtect 1.2</span>
-        <span class="date">June 2026</span>
-      </div>
-      <ul>
-        <li>Live camera grid in the menu bar, with one-click focus and fullscreen.</li>
-        <li>PTZ control with the keyboard or an on-screen pad.</li>
-        <li>Named layout profiles, each with its own window size and camera arrangement.</li>
-        <li>Pinnable, always-on-top floating camera windows.</li>
-        <li>Zoom and pan within a feed, drag to reorder, per-camera size and hide.</li>
-        <li>Light, dark, and automatic themes with accent colors, a global show/hide shortcut, and launch at login.</li>
-      </ul>
-    </div>
+    <h2 id="m-changelogH"></h2>
+    <div id="m-changelog"></div>
   </section>
 
   <section class="fineprint">
-    <h2>Compatibility</h2>
-    <p>QuickProtect is a third-party client that works with a UniFi&nbsp;Protect controller on your local network. You'll need an Integration API key from your controller for the camera list and live streams, and (optionally, for PTZ control) a local admin account. Away from home, connect to your network first with a VPN such as Tailscale or UniFi Teleport.</p>
-    <p>QuickProtect is an independent app and is not affiliated with, authorized, or endorsed by Ubiquiti&nbsp;Inc. UniFi and UniFi&nbsp;Protect are trademarks of Ubiquiti&nbsp;Inc., used here only to describe compatibility.</p>
+    <h2 id="m-compatH"></h2>
+    <p id="m-compat"></p>
+    <p id="m-disclaimer"></p>
   </section>
 </main>
 
 <footer>
   <div class="links">
-    <a href="support/">Support</a>
-    <a href="support/privacy.html">Privacy Policy</a>
-    <a href="https://github.com/cb2206/QuickProtect" target="_blank" rel="noopener">GitHub</a>
+    <a id="f-support" href="support/">Support</a>
+    <a id="f-privacy" href="support/privacy.html">Privacy Policy</a>
+    <a id="f-github" href="https://github.com/cb2206/QuickProtect" target="_blank" rel="noopener">GitHub</a>
   </div>
   <a class="mail" href="mailto:hello@quickprotect.app">hello@quickprotect.app</a>
   <div>© 2026 Christian Bartels</div>
 </footer>
+
+<script>
+const I18N = {
+  "en": {
+    langName: "English",
+    subtitle: "Live cameras in your Mac's menu bar",
+    tagline: "Your UniFi Protect cameras, one click from the menu bar — a live grid, fullscreen, and PTZ control, all on your local network. No cloud, no account, no tracking.",
+    badge: "Download on the",
+    gh: "Free DMG on GitHub",
+    pitch: "Click the menu-bar icon to see every camera in a live grid. Click one to focus it, press F for fullscreen, and double-click to open it in Protect. QuickProtect talks directly to your controller over RTSP/RTSPS on your local network — your video never leaves your network.",
+    features: [
+      { title: "Live cameras", bullets: [
+        "Every camera in a live grid, right from the menu bar.",
+        "One-click focus and fullscreen viewing.",
+        "Zoom and pan within any feed.",
+        "Double-click to open a camera in Protect."] },
+      { title: "Control & layout", bullets: [
+        "PTZ pan and tilt with the arrow keys or an on-screen pad.",
+        "Named layout profiles for different rooms or scenes.",
+        "Pinnable, always-on-top floating camera windows.",
+        "Resizable window, drag to reorder, per-camera size and hide."] },
+      { title: "Private by design", bullets: [
+        "Direct local connection — no cloud, no account, no tracking.",
+        "Credentials stored securely in the macOS Keychain.",
+        "Light, dark, and automatic themes with accent colors.",
+        "Global shortcut, launch at login, free and open-source (MIT)."] }
+    ],
+    shotsH: "A look inside",
+    changelogH: "What's new",
+    changelog: [ { version: "1.2", date: "June 2026", entries: [
+      "Live camera grid in the menu bar, with one-click focus and fullscreen.",
+      "PTZ control with the keyboard or an on-screen pad.",
+      "Named layout profiles, each with its own window size and camera arrangement.",
+      "Pinnable, always-on-top floating camera windows.",
+      "Zoom and pan within a feed, drag to reorder, per-camera size and hide.",
+      "Light, dark, and automatic themes with accent colors, a global show/hide shortcut, and launch at login."] } ],
+    compatH: "Compatibility",
+    compat: "QuickProtect is a third-party client that works with a UniFi Protect controller on your local network. You'll need an Integration API key from your controller for the camera list and live streams, and (optionally, for PTZ control) a local admin account. Away from home, connect to your network first with a VPN such as Tailscale or UniFi Teleport.",
+    disclaimer: "QuickProtect is an independent app and is not affiliated with, authorized, or endorsed by Ubiquiti Inc. UniFi and UniFi Protect are trademarks of Ubiquiti Inc., used here only to describe compatibility.",
+    support: "Support", privacy: "Privacy Policy", github: "GitHub", whatsNew: "What's new",
+    metaDesc: "QuickProtect puts your UniFi Protect cameras one click away in your Mac's menu bar. Live grid, focus, fullscreen, PTZ control — all local, all private. No cloud, no account, no tracking."
+  },
+  "de": {
+    langName: "Deutsch",
+    subtitle: "Live-Kameras in der Menüleiste deines Macs",
+    tagline: "Deine UniFi-Protect-Kameras, einen Klick von der Menüleiste entfernt — Live-Raster, Vollbild und PTZ-Steuerung, alles in deinem lokalen Netzwerk. Keine Cloud, kein Konto, kein Tracking.",
+    badge: "Laden im",
+    gh: "Kostenloses DMG auf GitHub",
+    pitch: "Klicke auf das Menüleistensymbol, um alle Kameras in einem Live-Raster zu sehen. Klicke auf eine Kamera, um sie zu vergrößern, drücke F für Vollbild, und doppelklicke, um sie in Protect zu öffnen. QuickProtect kommuniziert direkt mit deinem Controller über RTSP/RTSPS in deinem lokalen Netzwerk — dein Video verlässt nie dein Netzwerk.",
+    features: [
+      { title: "Live-Kameras", bullets: [
+        "Alle Kameras im Live-Raster, direkt aus der Menüleiste.",
+        "Großansicht und Vollbild mit einem Klick.",
+        "Zoomen und Schwenken in jedem Feed.",
+        "Doppelklicke, um eine Kamera in Protect zu öffnen."] },
+      { title: "Steuerung & Layout", bullets: [
+        "PTZ schwenken und neigen mit den Pfeiltasten oder dem Steuerkreuz.",
+        "Benannte Layout-Profile für verschiedene Räume oder Szenen.",
+        "Anheftbare, immer im Vordergrund schwebende Kamerafenster.",
+        "Größenveränderbares Fenster, per Ziehen neu anordnen, Größe und Sichtbarkeit pro Kamera."] },
+      { title: "Privat by Design", bullets: [
+        "Direkte lokale Verbindung — keine Cloud, kein Konto, kein Tracking.",
+        "Zugangsdaten sicher im macOS-Schlüsselbund gespeichert.",
+        "Helles, dunkles und automatisches Design mit Akzentfarben.",
+        "Globaler Kurzbefehl, Start bei der Anmeldung, kostenlos und quelloffen (MIT)."] }
+    ],
+    shotsH: "Ein Blick in die App",
+    changelogH: "Neuigkeiten",
+    changelog: [ { version: "1.2", date: "Juni 2026", entries: [
+      "Live-Kameraraster in der Menüleiste, mit Großansicht und Vollbild per Klick.",
+      "PTZ-Steuerung per Tastatur oder Steuerkreuz auf dem Bildschirm.",
+      "Benannte Layout-Profile, jedes mit eigener Fenstergröße und Kameraanordnung.",
+      "Anheftbare, immer im Vordergrund schwebende Kamerafenster.",
+      "Zoomen und Schwenken im Bild, per Ziehen neu anordnen, Größe und Sichtbarkeit pro Kamera.",
+      "Helles, dunkles und automatisches Design mit Akzentfarben, globaler Kurzbefehl zum Ein-/Ausblenden und Start bei der Anmeldung."] } ],
+    compatH: "Kompatibilität",
+    compat: "QuickProtect ist ein Drittanbieter-Client, der mit einem UniFi-Protect-Controller in deinem lokalen Netzwerk funktioniert. Du brauchst einen Integrations-API-Schlüssel deines Controllers für die Kameraliste und Live-Streams sowie (optional, für die PTZ-Steuerung) ein lokales Admin-Konto. Von unterwegs verbindest du dich zuerst per VPN wie Tailscale oder UniFi Teleport mit deinem Netzwerk.",
+    disclaimer: "QuickProtect ist eine unabhängige App und steht in keiner Verbindung zu Ubiquiti Inc., ist nicht von Ubiquiti Inc. autorisiert und wird nicht unterstützt. UniFi und UniFi Protect sind Marken von Ubiquiti Inc., die hier nur zur Beschreibung der Kompatibilität genannt werden.",
+    support: "Support", privacy: "Datenschutz", github: "GitHub", whatsNew: "Neuigkeiten",
+    metaDesc: "QuickProtect bringt deine UniFi-Protect-Kameras mit einem Klick in die Menüleiste deines Macs. Live-Raster, Großansicht, Vollbild, PTZ — alles lokal, alles privat. Keine Cloud, kein Konto, kein Tracking."
+  },
+  "es": {
+    langName: "Español",
+    subtitle: "Cámaras en vivo en la barra de menús de tu Mac",
+    tagline: "Tus cámaras UniFi Protect a un clic de la barra de menús: cuadrícula en vivo, pantalla completa y control PTZ, todo en tu red local. Sin nube, sin cuenta, sin rastreo.",
+    badge: "Descárgalo en el",
+    gh: "DMG gratis en GitHub",
+    pitch: "Haz clic en el icono de la barra de menús para ver todas las cámaras en una cuadrícula en vivo. Haz clic en una para ampliarla, pulsa F para pantalla completa y doble clic para abrirla en Protect. QuickProtect se comunica directamente con tu controlador mediante RTSP/RTSPS en tu red local: tu vídeo nunca sale de tu red.",
+    features: [
+      { title: "Cámaras en vivo", bullets: [
+        "Todas las cámaras en una cuadrícula en vivo, desde la barra de menús.",
+        "Ampliación y pantalla completa con un clic.",
+        "Zoom y desplazamiento dentro de cualquier transmisión.",
+        "Doble clic para abrir una cámara en Protect."] },
+      { title: "Control y diseño", bullets: [
+        "Gira e inclina las PTZ con las teclas de flecha o un panel en pantalla.",
+        "Perfiles de diseño con nombre para distintas salas o escenas.",
+        "Ventanas de cámara flotantes, fijables y siempre visibles.",
+        "Ventana redimensionable, reordena arrastrando, tamaño y ocultación por cámara."] },
+      { title: "Privacidad por diseño", bullets: [
+        "Conexión local directa: sin nube, sin cuenta, sin rastreo.",
+        "Credenciales guardadas de forma segura en el Llavero de macOS.",
+        "Temas claro, oscuro y automático con colores de acento.",
+        "Atajo global, abrir al iniciar sesión, gratis y de código abierto (MIT)."] }
+    ],
+    shotsH: "Un vistazo a la app",
+    changelogH: "Novedades",
+    changelog: [ { version: "1.2", date: "junio de 2026", entries: [
+      "Cuadrícula de cámaras en vivo en la barra de menús, con ampliación y pantalla completa con un clic.",
+      "Control PTZ con el teclado o un panel en pantalla.",
+      "Perfiles de diseño con nombre, cada uno con su tamaño de ventana y disposición de cámaras.",
+      "Ventanas de cámara flotantes, fijables y siempre visibles.",
+      "Zoom y desplazamiento dentro de una transmisión, reordena arrastrando, tamaño y ocultación por cámara.",
+      "Temas claro, oscuro y automático con colores de acento, atajo global para mostrar u ocultar y abrir al iniciar sesión."] } ],
+    compatH: "Compatibilidad",
+    compat: "QuickProtect es un cliente de terceros que funciona con un controlador UniFi Protect en tu red local. Necesitarás una clave de la API de integración de tu controlador para la lista de cámaras y las transmisiones en vivo y (opcionalmente, para el control PTZ) una cuenta de administrador local. Fuera de casa, conéctate primero a tu red con una VPN como Tailscale o UniFi Teleport.",
+    disclaimer: "QuickProtect es una app independiente y no está afiliada a Ubiquiti Inc. ni autorizada ni respaldada por ella. UniFi y UniFi Protect son marcas de Ubiquiti Inc., utilizadas aquí solo para describir la compatibilidad.",
+    support: "Soporte", privacy: "Privacidad", github: "GitHub", whatsNew: "Novedades",
+    metaDesc: "QuickProtect pone tus cámaras UniFi Protect a un clic en la barra de menús de tu Mac. Cuadrícula en vivo, pantalla completa, control PTZ: todo local, todo privado. Sin nube, sin cuenta, sin rastreo."
+  },
+  "fr": {
+    langName: "Français",
+    subtitle: "Caméras en direct dans la barre des menus de votre Mac",
+    tagline: "Vos caméras UniFi Protect à un clic de la barre des menus : grille en direct, plein écran et contrôle PTZ, le tout sur votre réseau local. Pas de cloud, pas de compte, pas de suivi.",
+    badge: "Télécharger dans l'",
+    gh: "DMG gratuit sur GitHub",
+    pitch: "Cliquez sur l'icône de la barre des menus pour voir toutes les caméras dans une grille en direct. Cliquez sur l'une d'elles pour l'agrandir, appuyez sur F pour le plein écran et double-cliquez pour l'ouvrir dans Protect. QuickProtect communique directement avec votre contrôleur via RTSP/RTSPS sur votre réseau local — votre vidéo ne quitte jamais votre réseau.",
+    features: [
+      { title: "Caméras en direct", bullets: [
+        "Toutes les caméras dans une grille en direct, depuis la barre des menus.",
+        "Agrandissement et plein écran en un clic.",
+        "Zoom et panoramique dans n'importe quel flux.",
+        "Double-cliquez pour ouvrir une caméra dans Protect."] },
+      { title: "Contrôle et disposition", bullets: [
+        "Panoramique et inclinaison PTZ au clavier ou avec un pavé à l'écran.",
+        "Profils de disposition nommés pour différentes pièces ou scènes.",
+        "Fenêtres de caméra flottantes, épinglables et toujours au premier plan.",
+        "Fenêtre redimensionnable, réorganisation par glissement, taille et masquage par caméra."] },
+      { title: "Confidentialité dès la conception", bullets: [
+        "Connexion locale directe — pas de cloud, pas de compte, pas de suivi.",
+        "Identifiants stockés en sécurité dans le trousseau macOS.",
+        "Thèmes clair, sombre et automatique avec couleurs d'accent.",
+        "Raccourci global, lancement à la connexion, gratuit et open source (MIT)."] }
+    ],
+    shotsH: "Un aperçu de l'app",
+    changelogH: "Nouveautés",
+    changelog: [ { version: "1.2", date: "juin 2026", entries: [
+      "Grille de caméras en direct dans la barre des menus, avec agrandissement et plein écran en un clic.",
+      "Contrôle PTZ au clavier ou avec un pavé à l'écran.",
+      "Profils de disposition nommés, chacun avec sa taille de fenêtre et son agencement de caméras.",
+      "Fenêtres de caméra flottantes, épinglables et toujours au premier plan.",
+      "Zoom et panoramique dans un flux, réorganisation par glissement, taille et masquage par caméra.",
+      "Thèmes clair, sombre et automatique avec couleurs d'accent, raccourci global d'affichage/masquage et lancement à la connexion."] } ],
+    compatH: "Compatibilité",
+    compat: "QuickProtect est un client tiers qui fonctionne avec un contrôleur UniFi Protect sur votre réseau local. Vous aurez besoin d'une clé de l'API d'intégration de votre contrôleur pour la liste des caméras et les flux en direct, et (en option, pour le contrôle PTZ) d'un compte administrateur local. En déplacement, connectez-vous d'abord à votre réseau avec un VPN comme Tailscale ou UniFi Teleport.",
+    disclaimer: "QuickProtect est une app indépendante, non affiliée à Ubiquiti Inc., non autorisée ni approuvée par Ubiquiti Inc. UniFi et UniFi Protect sont des marques d'Ubiquiti Inc., utilisées ici uniquement pour décrire la compatibilité.",
+    support: "Assistance", privacy: "Confidentialité", github: "GitHub", whatsNew: "Nouveautés",
+    metaDesc: "QuickProtect place vos caméras UniFi Protect à un clic dans la barre des menus de votre Mac. Grille en direct, plein écran, contrôle PTZ — tout en local, tout privé. Pas de cloud, pas de compte, pas de suivi."
+  },
+  "it": {
+    langName: "Italiano",
+    subtitle: "Telecamere dal vivo nella barra dei menu del Mac",
+    tagline: "Le tue telecamere UniFi Protect a un clic dalla barra dei menu: griglia dal vivo, schermo intero e controllo PTZ, tutto sulla tua rete locale. Niente cloud, niente account, niente tracciamento.",
+    badge: "Scarica su",
+    gh: "DMG gratuito su GitHub",
+    pitch: "Fai clic sull'icona nella barra dei menu per vedere tutte le telecamere in una griglia dal vivo. Fai clic su una per ingrandirla, premi F per lo schermo intero e doppio clic per aprirla in Protect. QuickProtect comunica direttamente con il tuo controller tramite RTSP/RTSPS sulla rete locale: il tuo video non lascia mai la tua rete.",
+    features: [
+      { title: "Telecamere dal vivo", bullets: [
+        "Tutte le telecamere in una griglia dal vivo, dalla barra dei menu.",
+        "Ingrandimento e schermo intero con un clic.",
+        "Zoom e spostamento all'interno di qualsiasi feed.",
+        "Doppio clic per aprire una telecamera in Protect."] },
+      { title: "Controllo e layout", bullets: [
+        "Brandeggio e inclinazione PTZ con i tasti freccia o un pad sullo schermo.",
+        "Profili di layout con nome per stanze o scene diverse.",
+        "Finestre delle telecamere mobili, fissabili e sempre in primo piano.",
+        "Finestra ridimensionabile, riordino trascinando, dimensione e visibilità per telecamera."] },
+      { title: "Privacy by design", bullets: [
+        "Connessione locale diretta: niente cloud, niente account, niente tracciamento.",
+        "Credenziali salvate in modo sicuro nel Portachiavi di macOS.",
+        "Temi chiaro, scuro e automatico con colori d'accento.",
+        "Scorciatoia globale, avvio all'accesso, gratuito e open source (MIT)."] }
+    ],
+    shotsH: "Uno sguardo all'app",
+    changelogH: "Novità",
+    changelog: [ { version: "1.2", date: "giugno 2026", entries: [
+      "Griglia di telecamere dal vivo nella barra dei menu, con ingrandimento e schermo intero con un clic.",
+      "Controllo PTZ con la tastiera o un pad sullo schermo.",
+      "Profili di layout con nome, ciascuno con la propria dimensione della finestra e disposizione delle telecamere.",
+      "Finestre delle telecamere mobili, fissabili e sempre in primo piano.",
+      "Zoom e spostamento all'interno di un feed, riordino trascinando, dimensione e visibilità per telecamera.",
+      "Temi chiaro, scuro e automatico con colori d'accento, scorciatoia globale per mostrare/nascondere e avvio all'accesso."] } ],
+    compatH: "Compatibilità",
+    compat: "QuickProtect è un client di terze parti che funziona con un controller UniFi Protect sulla tua rete locale. Ti serviranno una chiave dell'API di integrazione del controller per l'elenco delle telecamere e i flussi dal vivo e (facoltativamente, per il controllo PTZ) un account amministratore locale. Fuori casa, connettiti prima alla tua rete con una VPN come Tailscale o UniFi Teleport.",
+    disclaimer: "QuickProtect è un'app indipendente e non è affiliata a Ubiquiti Inc., né autorizzata o approvata da quest'ultima. UniFi e UniFi Protect sono marchi di Ubiquiti Inc., usati qui solo per descrivere la compatibilità.",
+    support: "Supporto", privacy: "Privacy", github: "GitHub", whatsNew: "Novità",
+    metaDesc: "QuickProtect mette le tue telecamere UniFi Protect a un clic nella barra dei menu del Mac. Griglia dal vivo, schermo intero, controllo PTZ: tutto locale, tutto privato. Niente cloud, niente account, niente tracciamento."
+  },
+  "nl": {
+    langName: "Nederlands",
+    subtitle: "Live camera's in de menubalk van je Mac",
+    tagline: "Je UniFi Protect-camera's op één klik van de menubalk — live raster, volledig scherm en PTZ-bediening, allemaal op je lokale netwerk. Geen cloud, geen account, geen tracking.",
+    badge: "Download in de",
+    gh: "Gratis DMG op GitHub",
+    pitch: "Klik op het menubalksymbool om alle camera's in een live raster te zien. Klik op een camera om die te vergroten, druk op F voor volledig scherm en dubbelklik om die in Protect te openen. QuickProtect communiceert rechtstreeks met je controller via RTSP/RTSPS op je lokale netwerk — je video verlaat nooit je netwerk.",
+    features: [
+      { title: "Live camera's", bullets: [
+        "Alle camera's in een live raster, direct vanuit de menubalk.",
+        "Vergroten en volledig scherm met één klik.",
+        "Zoomen en pannen binnen elk beeld.",
+        "Dubbelklik om een camera in Protect te openen."] },
+      { title: "Bediening en indeling", bullets: [
+        "PTZ pannen en kantelen met de pijltoetsen of een paneel op het scherm.",
+        "Benoemde indelingsprofielen voor verschillende ruimtes of scènes.",
+        "Vastzetbare, altijd-op-voorgrond zwevende cameravensters.",
+        "Schaalbaar venster, herschikken door slepen, formaat en zichtbaarheid per camera."] },
+      { title: "Privé door ontwerp", bullets: [
+        "Directe lokale verbinding — geen cloud, geen account, geen tracking.",
+        "Inloggegevens veilig opgeslagen in de macOS-sleutelhanger.",
+        "Lichte, donkere en automatische thema's met accentkleuren.",
+        "Globale sneltoets, starten bij inloggen, gratis en open source (MIT)."] }
+    ],
+    shotsH: "Een blik in de app",
+    changelogH: "Wat is er nieuw",
+    changelog: [ { version: "1.2", date: "juni 2026", entries: [
+      "Live cameraraster in de menubalk, met vergroten en volledig scherm in één klik.",
+      "PTZ-bediening met het toetsenbord of een paneel op het scherm.",
+      "Benoemde indelingsprofielen, elk met eigen venstergrootte en camera-indeling.",
+      "Vastzetbare, altijd-op-voorgrond zwevende cameravensters.",
+      "Zoomen en pannen binnen een beeld, herschikken door slepen, formaat en zichtbaarheid per camera.",
+      "Lichte, donkere en automatische thema's met accentkleuren, globale sneltoets om te tonen/verbergen en starten bij inloggen."] } ],
+    compatH: "Compatibiliteit",
+    compat: "QuickProtect is een externe client die werkt met een UniFi Protect-controller op je lokale netwerk. Je hebt een integratie-API-sleutel van je controller nodig voor de cameralijst en live streams, en (optioneel, voor PTZ-bediening) een lokaal beheerdersaccount. Onderweg verbind je eerst met je netwerk via een VPN zoals Tailscale of UniFi Teleport.",
+    disclaimer: "QuickProtect is een onafhankelijke app en is niet verbonden met, geautoriseerd door of goedgekeurd door Ubiquiti Inc. UniFi en UniFi Protect zijn handelsmerken van Ubiquiti Inc., hier alleen gebruikt om de compatibiliteit te beschrijven.",
+    support: "Ondersteuning", privacy: "Privacy", github: "GitHub", whatsNew: "Wat is er nieuw",
+    metaDesc: "QuickProtect zet je UniFi Protect-camera's op één klik in de menubalk van je Mac. Live raster, volledig scherm, PTZ-bediening — alles lokaal, alles privé. Geen cloud, geen account, geen tracking."
+  },
+  "pt-br": {
+    langName: "Português",
+    subtitle: "Câmeras ao vivo na barra de menus do seu Mac",
+    tagline: "Suas câmeras UniFi Protect a um clique da barra de menus — grade ao vivo, tela cheia e controle PTZ, tudo na sua rede local. Sem nuvem, sem conta, sem rastreamento.",
+    badge: "Baixar na",
+    gh: "DMG gratuito no GitHub",
+    pitch: "Clique no ícone da barra de menus para ver todas as câmeras em uma grade ao vivo. Clique em uma para ampliá-la, pressione F para tela cheia e dê um clique duplo para abri-la no Protect. O QuickProtect se comunica diretamente com o seu controlador via RTSP/RTSPS na sua rede local — seu vídeo nunca sai da sua rede.",
+    features: [
+      { title: "Câmeras ao vivo", bullets: [
+        "Todas as câmeras em uma grade ao vivo, direto da barra de menus.",
+        "Ampliação e tela cheia com um clique.",
+        "Zoom e deslocamento dentro de qualquer transmissão.",
+        "Clique duplo para abrir uma câmera no Protect."] },
+      { title: "Controle e layout", bullets: [
+        "Faça pan e tilt das PTZ com as teclas de seta ou um painel na tela.",
+        "Perfis de layout nomeados para diferentes salas ou cenas.",
+        "Janelas de câmera flutuantes, fixáveis e sempre em primeiro plano.",
+        "Janela redimensionável, reordene arrastando, tamanho e ocultação por câmera."] },
+      { title: "Privacidade por design", bullets: [
+        "Conexão local direta — sem nuvem, sem conta, sem rastreamento.",
+        "Credenciais guardadas com segurança no Chaveiro do macOS.",
+        "Temas claro, escuro e automático com cores de destaque.",
+        "Atalho global, abrir ao fazer login, gratuito e de código aberto (MIT)."] }
+    ],
+    shotsH: "Um olhar pelo app",
+    changelogH: "Novidades",
+    changelog: [ { version: "1.2", date: "junho de 2026", entries: [
+      "Grade de câmeras ao vivo na barra de menus, com ampliação e tela cheia com um clique.",
+      "Controle PTZ pelo teclado ou por um painel na tela.",
+      "Perfis de layout nomeados, cada um com seu tamanho de janela e disposição de câmeras.",
+      "Janelas de câmera flutuantes, fixáveis e sempre em primeiro plano.",
+      "Zoom e deslocamento dentro de uma transmissão, reordene arrastando, tamanho e ocultação por câmera.",
+      "Temas claro, escuro e automático com cores de destaque, atalho global para mostrar/ocultar e abrir ao fazer login."] } ],
+    compatH: "Compatibilidade",
+    compat: "O QuickProtect é um cliente de terceiros que funciona com um controlador UniFi Protect na sua rede local. Você vai precisar de uma chave da API de integração do seu controlador para a lista de câmeras e as transmissões ao vivo e (opcionalmente, para o controle PTZ) de uma conta de administrador local. Fora de casa, conecte-se primeiro à sua rede com uma VPN como Tailscale ou UniFi Teleport.",
+    disclaimer: "O QuickProtect é um app independente e não é afiliado, autorizado nem endossado pela Ubiquiti Inc. UniFi e UniFi Protect são marcas comerciais da Ubiquiti Inc., usadas aqui apenas para descrever a compatibilidade.",
+    support: "Suporte", privacy: "Privacidade", github: "GitHub", whatsNew: "Novidades",
+    metaDesc: "O QuickProtect coloca suas câmeras UniFi Protect a um clique na barra de menus do seu Mac. Grade ao vivo, tela cheia, controle PTZ — tudo local, tudo privado. Sem nuvem, sem conta, sem rastreamento."
+  }
+};
+const ORDER = ["en", "de", "es", "fr", "it", "nl", "pt-br"];
+const LANG_ATTR = { "en": "en", "de": "de", "es": "es", "fr": "fr", "it": "it", "nl": "nl", "pt-br": "pt-BR" };
+
+function pick() {
+  const saved = localStorage.getItem("qp_lang");
+  if (saved && I18N[saved]) return saved;
+  for (const pref of (navigator.languages || [navigator.language || "en"])) {
+    const low = pref.toLowerCase();
+    if (low.startsWith("pt")) return "pt-br";
+    const base = low.split("-")[0];
+    if (I18N[base]) return base;
+  }
+  return "en";
+}
+
+function el(tag, cls) { const e = document.createElement(tag); if (cls) e.className = cls; return e; }
+
+function render(code) {
+  const t = I18N[code];
+  document.documentElement.lang = LANG_ATTR[code] || code;
+  document.title = "QuickProtect — " + t.subtitle;
+  document.getElementById("metaDesc").setAttribute("content", t.metaDesc);
+
+  document.getElementById("h-subtitle").textContent = t.subtitle;
+  document.getElementById("h-tagline").textContent = t.tagline;
+  document.getElementById("b-small").textContent = t.badge;
+  document.getElementById("gh-label").textContent = t.gh;
+  document.getElementById("m-pitch").textContent = t.pitch;
+  document.getElementById("m-shotsH").textContent = t.shotsH;
+  document.getElementById("m-compatH").textContent = t.compatH;
+  document.getElementById("m-compat").textContent = t.compat;
+  document.getElementById("m-disclaimer").textContent = t.disclaimer;
+
+  const feats = document.getElementById("m-features");
+  feats.innerHTML = "";
+  for (const s of t.features) {
+    const card = el("div", "feature");
+    const h = el("h2"); h.textContent = s.title; card.appendChild(h);
+    const ul = el("ul");
+    for (const b of s.bullets) { const li = el("li"); li.textContent = b; ul.appendChild(li); }
+    card.appendChild(ul);
+    feats.appendChild(card);
+  }
+
+  document.getElementById("m-changelogH").textContent = t.changelogH;
+  const cl = document.getElementById("m-changelog");
+  cl.innerHTML = "";
+  for (const v of t.changelog) {
+    const rel = el("div", "release");
+    const head = el("div", "release-head");
+    const ver = el("span", "ver"); ver.textContent = "QuickProtect " + v.version;
+    const date = el("span", "date"); date.textContent = v.date;
+    head.appendChild(ver); head.appendChild(date);
+    rel.appendChild(head);
+    const ul = el("ul");
+    for (const item of v.entries) { const li = el("li"); li.textContent = item; ul.appendChild(li); }
+    rel.appendChild(ul);
+    cl.appendChild(rel);
+  }
+
+  document.getElementById("f-support").textContent = t.support;
+  document.getElementById("f-privacy").textContent = t.privacy;
+  document.getElementById("f-github").textContent = t.github;
+  document.getElementById("nav-support").textContent = t.support;
+  document.getElementById("nav-changelog").textContent = t.whatsNew;
+  document.getElementById("lang").value = code;
+}
+
+(function init() {
+  const sel = document.getElementById("lang");
+  for (const code of ORDER) {
+    const o = document.createElement("option");
+    o.value = code; o.textContent = I18N[code].langName;
+    sel.appendChild(o);
+  }
+  sel.addEventListener("change", e => {
+    localStorage.setItem("qp_lang", e.target.value);
+    render(e.target.value);
+  });
+  render(pick());
+})();
+</script>
 </body>
 </html>
