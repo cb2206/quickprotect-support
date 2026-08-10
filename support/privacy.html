@@ -90,23 +90,24 @@
 
 <main>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: June 4, 2026</p>
+  <p class="updated">Last updated: August 10, 2026</p>
 
   <div class="card">
-    <p class="lede">QuickProtect ("the app") is a macOS menu-bar application for viewing live camera feeds from your own UniFi&nbsp;Protect controller. Your privacy matters, and this policy explains exactly what the app does and does not do with your data.</p>
+    <p class="lede">QuickProtect ("the app") is a menu-bar (macOS) and system-tray (Windows) application for viewing live camera feeds from your own UniFi&nbsp;Protect controller. Your privacy matters, and this policy explains exactly what the app does and does not do with your data.</p>
 
     <h2>Summary</h2>
     <p><strong>QuickProtect does not collect, store, transmit, or share any personal data.</strong> There are no analytics, no tracking, no advertising, no user accounts, and no servers operated by the developer. The app talks only to the UniFi&nbsp;Protect controller you configure, on your own network.</p>
 
     <h2>Information stored on your device</h2>
-    <p>The app stores the following locally on your Mac, solely so it can function. None of it is ever sent to the developer or any third party:</p>
+    <p>The app stores the following locally on your device, solely so it can function. None of it is ever sent to the developer or any third party:</p>
     <ul>
-      <li><strong>Controller connection details</strong> — the IP address and API key for your UniFi&nbsp;Protect controller, and (optionally) a local admin username and password used for PTZ camera control. These credentials are stored securely in the <strong>macOS Keychain</strong> and are used only to connect to your controller.</li>
-      <li><strong>App preferences</strong> — settings such as themes, camera order, per-display layouts, and your keyboard shortcut, stored in standard macOS preferences.</li>
+      <li><strong>Controller connection details</strong> — the IP address and API key for your UniFi&nbsp;Protect controller, and (optionally) a local admin username and password used for PTZ camera control. These credentials are stored securely on your device — in the <strong>macOS Keychain</strong> on Mac, or <strong>encrypted with your Windows account (DPAPI)</strong> on Windows — and are used only to connect to your controller.</li>
+      <li><strong>App preferences</strong> — settings such as themes, camera order, layouts, and your keyboard shortcut, stored in standard macOS preferences or in a local settings file on Windows.</li>
     </ul>
 
     <h2>Network connections</h2>
     <p>QuickProtect connects <strong>only to the UniFi&nbsp;Protect controller you specify</strong>, over HTTPS and RTSP/RTSPS, to list cameras and stream video. This connection is made on your local network (or through a VPN you set up yourself). The app does not connect to any developer-operated servers and does not transmit your data anywhere else.</p>
+    <p>One exception: the free builds downloaded from GitHub check <strong>GitHub&nbsp;(api.github.com)</strong> once a day for a newer release, so they can show a notice in Settings. This request contains no personal data or identifiers, and nothing is downloaded or installed automatically. Builds from the App&nbsp;Store or Microsoft&nbsp;Store are updated by the store itself and never perform this check.</p>
 
     <h2>Data collection</h2>
     <p>None. QuickProtect does not collect or process any personal data, usage data, diagnostics, or identifiers.</p>
