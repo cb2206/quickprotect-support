@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>QuickProtect — Support</title>
-<meta name="description" content="Support and help for QuickProtect, the menu-bar and system-tray app for viewing live UniFi Protect cameras on macOS and Windows.">
+<meta name="description" content="Support and help for QuickProtect, the menu-bar and system-tray app for viewing live UniFi Protect cameras on macOS, Windows, and Linux.">
 <link rel="canonical" href="https://quickprotect.app/support/">
 <link rel="icon" type="image/png" href="../assets/icon.png">
 <script>
@@ -132,15 +132,15 @@
     <div class="card">
       <div class="faq">
         <h3>What does QuickProtect do?</h3>
-        <p>QuickProtect is a lightweight menu-bar (macOS) and system-tray (Windows) app for viewing live camera feeds from your own UniFi&nbsp;Protect controller. Click the icon to see all your cameras in a resizable grid — no browser or separate app needed. Click a camera to focus it, press <strong>F</strong> for fullscreen, and use the arrow keys to pan and tilt PTZ cameras.</p>
+        <p>QuickProtect is a lightweight menu-bar (macOS) and system-tray (Windows, Linux) app for viewing live camera feeds from your own UniFi&nbsp;Protect controller. Click the icon to see all your cameras in a resizable grid — no browser or separate app needed. Click a camera to focus it, press <strong>F</strong> for fullscreen, and use the arrow keys to pan and tilt PTZ cameras.</p>
       </div>
       <div class="faq">
         <h3>How do I connect to my controller?</h3>
-        <p>Open <strong>Settings</strong>, enter your controller's local <strong>IP address</strong> and an <strong>API key</strong>, and your cameras appear in the grid. Generate the API key in your UniFi&nbsp;Protect controller's settings (Control Plane → Integrations / API). The key is stored securely on your device — in the macOS Keychain on Mac, or encrypted with your Windows account on Windows.</p>
+        <p>Open <strong>Settings</strong>, enter your controller's local <strong>IP address</strong> and an <strong>API key</strong>, and your cameras appear in the grid. Generate the API key in your UniFi&nbsp;Protect controller's settings (Control Plane → Integrations / API). The key is stored securely on your device — in the macOS Keychain on Mac, encrypted with your Windows account on Windows, or in your desktop's secret service on Linux.</p>
       </div>
       <div class="faq">
         <h3>What do I need?</h3>
-        <p>A Mac running macOS 13 or later, or a PC running Windows 10 (version 1809) or later — plus a UniFi&nbsp;Protect controller reachable on your local network and an Integration API key from that controller. For PTZ control you'll also need a local admin account on the controller.</p>
+        <p>A Mac running macOS 13 or later, a PC running Windows 10 (version 1809) or later, or a Linux desktop (x64) — plus a UniFi&nbsp;Protect controller reachable on your local network and an Integration API key from that controller. For PTZ control you'll also need a local admin account on the controller.</p>
       </div>
     </div>
   </section>
@@ -154,7 +154,7 @@
       </div>
       <div class="faq">
         <h3>Why does PTZ need a separate login from the API key?</h3>
-        <p>The Integration API (your API key) handles the camera list and live streaming but does not support PTZ. PTZ control uses the classic Protect API, which authenticates with a local admin account. Both credentials are stored securely on your device (macOS Keychain, or encrypted with your Windows account on Windows).</p>
+        <p>The Integration API (your API key) handles the camera list and live streaming but does not support PTZ. PTZ control uses the classic Protect API, which authenticates with a local admin account. Both credentials are stored securely on your device (macOS Keychain, encrypted with your Windows account on Windows, or your desktop's secret service on Linux).</p>
       </div>
       <div class="faq">
         <h3>What are layout profiles and floating windows?</h3>
@@ -168,7 +168,7 @@
     <div class="card">
       <div class="faq">
         <h3>No cameras appear after I enter my details.</h3>
-        <p>Confirm the controller's IP address is correct and reachable from your Mac (try opening <code>https://&lt;controller-ip&gt;</code> in a browser on the same network), and that the API key is valid and hasn't been revoked. QuickProtect needs to reach the controller directly on the local network.</p>
+        <p>Confirm the controller's IP address is correct and reachable from your computer (try opening <code>https://&lt;controller-ip&gt;</code> in a browser on the same network), and that the API key is valid and hasn't been revoked. QuickProtect needs to reach the controller directly on the local network.</p>
       </div>
       <div class="faq">
         <h3>Can I use QuickProtect when I'm away from home?</h3>

@@ -229,6 +229,7 @@
         <span class="name">QuickProtect</span>
         <span class="chip">macOS</span>
         <span class="chip">Windows</span>
+        <span class="chip">Linux</span>
       </div>
       <h1 id="h-subtitle"></h1>
       <p class="tagline" id="h-tagline"></p>
@@ -241,10 +242,10 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5 10.5 4.4v7.1H3V5.5zm0 13 7.5 1.1v-7.1H3v6zm8.5 1.2L21 21V12.5h-9.5v7.2zm0-15.4v7.2H21V3l-9.5 1.3z"/></svg>
           <span><span class="small" id="b-win"></span><span class="big">Windows</span></span>
         </a>
-        <span class="teaser">
+        <a class="appstore" href="https://github.com/cb2206/QuickProtect/releases/latest" target="_blank" rel="noopener" aria-label="Download QuickProtect for Linux">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c-2.65 0-4.3 1.9-4.3 4.4 0 1.5.32 2.55-.4 3.95C6.2 12.5 4.6 14.4 4.6 16.8c0 .9.23 1.75.68 2.47-.5.28-.83.66-.83 1.13 0 .84 1.03 1.1 2.06 1.1.62 0 1.4-.18 2.1-.18.98 0 2.2.28 3.39.28s2.41-.28 3.39-.28c.7 0 1.48.18 2.1.18 1.03 0 2.06-.26 2.06-1.1 0-.47-.33-.85-.83-1.13.45-.72.68-1.57.68-2.47 0-2.4-1.6-4.3-2.7-6.45-.72-1.4-.4-2.45-.4-3.95C16.3 3.9 14.65 2 12 2zm-1.8 5.1c.5 0 .9.5.9 1.1s-.4 1.1-.9 1.1-.9-.5-.9-1.1.4-1.1.9-1.1zm3.6 0c.5 0 .9.5.9 1.1s-.4 1.1-.9 1.1-.9-.5-.9-1.1.4-1.1.9-1.1zm-1.8 2.9 1.9 1.05c.35.2.35.55 0 .75L12 12.85l-1.9-1.05c-.35-.2-.35-.55 0-.75L12 10z"/></svg>
-          <span><span class="small cs-label"></span><span class="big">Linux</span></span>
-        </span>
+          <span><span class="small" id="b-linux"></span><span class="big">Linux</span></span>
+        </a>
 
       </div>
       <div class="teaserrow">
@@ -325,7 +326,11 @@ const I18N = {
     ],
     shotsH: "A look inside",
     changelogH: "What's new",
-    changelog: [ { version: "1.3", date: "August 2026", entries: [
+    changelog: [ { version: "1.3.1", date: "August 2026", entries: [
+      "Now also on Linux — download the app free from GitHub.",
+      "Switching stream quality is now seamless — focusing a camera or going fullscreen no longer freezes the video for a moment.",
+      "On Windows and Linux, the focus view now shows its keyboard shortcuts as key hints."] },
+    { version: "1.3", date: "August 2026", entries: [
       "QuickProtect is now also available for Windows — feature for feature, from the Microsoft Store or as a free download on GitHub.",
       "Streams stay connected for a moment after closing the panel, so a quick reopen shows video instantly.",
       "Doorbell package cameras: the picture-in-picture shows a snapshot while the stream starts.",
@@ -372,7 +377,11 @@ const I18N = {
     ],
     shotsH: "Ein Blick in die App",
     changelogH: "Neuigkeiten",
-    changelog: [ { version: "1.3", date: "August 2026", entries: [
+    changelog: [ { version: "1.3.1", date: "August 2026", entries: [
+      "Jetzt auch für Linux — die App gibt es kostenlos auf GitHub.",
+      "Qualitätswechsel sind jetzt nahtlos – beim Vergrößern einer Kamera oder im Vollbild friert das Video nicht mehr kurz ein.",
+      "Unter Windows und Linux zeigt die Großansicht jetzt ihre Tastaturkürzel als Tastenhinweise an."] },
+    { version: "1.3", date: "August 2026", entries: [
       "QuickProtect gibt es jetzt auch für Windows — Funktion für Funktion, im Microsoft Store oder als kostenloser Download auf GitHub.",
       "Streams bleiben nach dem Schließen des Panels kurz verbunden — beim schnellen Wiederöffnen ist das Bild sofort da.",
       "Paket-Kameras an Türklingeln: das Bild-im-Bild zeigt einen Schnappschuss, während der Stream startet.",
@@ -419,7 +428,11 @@ const I18N = {
     ],
     shotsH: "Un vistazo a la app",
     changelogH: "Novedades",
-    changelog: [ { version: "1.3", date: "agosto de 2026", entries: [
+    changelog: [ { version: "1.3.1", date: "agosto de 2026", entries: [
+      "Ahora también en Linux — descarga la app gratis en GitHub.",
+      "El cambio de calidad de la transmisión ahora es fluido: ampliar una cámara o pasar a pantalla completa ya no congela el vídeo por un momento.",
+      "En Windows y Linux, la vista ampliada ahora muestra sus atajos de teclado como indicaciones de teclas."] },
+    { version: "1.3", date: "agosto de 2026", entries: [
       "QuickProtect ahora también está disponible para Windows — función por función, en la Microsoft Store o como descarga gratuita en GitHub.",
       "Las transmisiones permanecen conectadas un momento tras cerrar el panel: al reabrirlo rápido, el vídeo aparece al instante.",
       "Cámaras de paquetes en timbres: la imagen en imagen muestra una instantánea mientras arranca la transmisión.",
@@ -466,7 +479,11 @@ const I18N = {
     ],
     shotsH: "Un aperçu de l'app",
     changelogH: "Nouveautés",
-    changelog: [ { version: "1.3", date: "août 2026", entries: [
+    changelog: [ { version: "1.3.1", date: "août 2026", entries: [
+      "Désormais aussi sur Linux — téléchargez l'app gratuitement sur GitHub.",
+      "Le changement de qualité du flux est désormais fluide : agrandir une caméra ou passer en plein écran ne fige plus la vidéo un instant.",
+      "Sous Windows et Linux, la vue agrandie affiche désormais ses raccourcis clavier sous forme de touches."] },
+    { version: "1.3", date: "août 2026", entries: [
       "QuickProtect est désormais aussi disponible pour Windows — fonction pour fonction, sur le Microsoft Store ou en téléchargement gratuit sur GitHub.",
       "Les flux restent connectés un instant après la fermeture du panneau : à la réouverture rapide, la vidéo s'affiche instantanément.",
       "Caméras de colis des sonnettes : l'incrustation affiche un instantané pendant le démarrage du flux.",
@@ -513,7 +530,11 @@ const I18N = {
     ],
     shotsH: "Uno sguardo all'app",
     changelogH: "Novità",
-    changelog: [ { version: "1.3", date: "agosto 2026", entries: [
+    changelog: [ { version: "1.3.1", date: "agosto 2026", entries: [
+      "Ora anche su Linux — scarica l'app gratis da GitHub.",
+      "Il cambio di qualità del flusso ora è fluido: ingrandire una telecamera o passare a schermo intero non blocca più il video per un istante.",
+      "Su Windows e Linux, la vista ingrandita ora mostra le scorciatoie da tastiera come suggerimenti dei tasti."] },
+    { version: "1.3", date: "agosto 2026", entries: [
       "QuickProtect ora è disponibile anche per Windows — funzione per funzione, sul Microsoft Store o come download gratuito su GitHub.",
       "I flussi restano connessi per un momento dopo la chiusura del pannello: riaprendolo subito, il video appare all'istante.",
       "Telecamere pacchi dei campanelli: il picture-in-picture mostra un'istantanea mentre il flusso si avvia.",
@@ -560,7 +581,11 @@ const I18N = {
     ],
     shotsH: "Een blik in de app",
     changelogH: "Wat is er nieuw",
-    changelog: [ { version: "1.3", date: "augustus 2026", entries: [
+    changelog: [ { version: "1.3.1", date: "augustus 2026", entries: [
+      "Nu ook op Linux — download de app gratis op GitHub.",
+      "Wisselen van streamkwaliteit gaat nu naadloos — een camera vergroten of naar volledig scherm gaan bevriest het beeld niet meer even.",
+      "Op Windows en Linux toont de vergrote weergave nu de sneltoetsen als toetshints."] },
+    { version: "1.3", date: "augustus 2026", entries: [
       "QuickProtect is nu ook beschikbaar voor Windows — functie voor functie, in de Microsoft Store of als gratis download op GitHub.",
       "Streams blijven na het sluiten van het paneel even verbonden — bij snel heropenen is het beeld er meteen.",
       "Pakketcamera's van deurbellen: het beeld-in-beeld toont een momentopname terwijl de stream start.",
@@ -607,7 +632,11 @@ const I18N = {
     ],
     shotsH: "Um olhar pelo app",
     changelogH: "Novidades",
-    changelog: [ { version: "1.3", date: "agosto de 2026", entries: [
+    changelog: [ { version: "1.3.1", date: "agosto de 2026", entries: [
+      "Agora também no Linux — baixe o app grátis no GitHub.",
+      "A troca de qualidade da transmissão agora é perfeita — ampliar uma câmera ou entrar em tela cheia não congela mais o vídeo por um instante.",
+      "No Windows e no Linux, a visualização ampliada agora mostra os atalhos de teclado como dicas de teclas."] },
+    { version: "1.3", date: "agosto de 2026", entries: [
       "O QuickProtect agora também está disponível para Windows — recurso por recurso, na Microsoft Store ou como download gratuito no GitHub.",
       "As transmissões permanecem conectadas por um momento após fechar o painel — ao reabrir rápido, o vídeo aparece na hora.",
       "Câmeras de encomendas das campainhas: o picture-in-picture mostra um instantâneo enquanto a transmissão inicia.",
@@ -654,8 +683,8 @@ function render(code) {
   document.getElementById("h-tagline").textContent = t.tagline;
   document.getElementById("b-small").textContent = t.badge;
   document.getElementById("b-win").textContent = t.winBadge;
+  document.getElementById("b-linux").textContent = t.winBadge;
   document.getElementById("b-gh").textContent = t.gh;
-  for (const n of document.querySelectorAll(".cs-label")) n.textContent = t.comingSoon;
   document.getElementById("m-pitch").textContent = t.pitch;
   document.getElementById("m-shotsH").textContent = t.shotsH;
   document.getElementById("m-compatH").textContent = t.compatH;
