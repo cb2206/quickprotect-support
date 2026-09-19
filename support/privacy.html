@@ -90,7 +90,7 @@
 
 <main>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: August 13, 2026</p>
+  <p class="updated">Last updated: September 19, 2026</p>
 
   <div class="card">
     <p class="lede">QuickProtect ("the app") is a menu-bar (macOS) and system-tray (Windows, Linux) application for viewing live camera feeds from your own UniFi&nbsp;Protect controller. Your privacy matters, and this policy explains exactly what the app does and does not do with your data.</p>
@@ -107,6 +107,7 @@
 
     <h2>Network connections</h2>
     <p>QuickProtect connects <strong>only to the UniFi&nbsp;Protect controller you specify</strong>, over HTTPS and RTSP/RTSPS, to list cameras and stream video. This connection is made on your local network (or through a VPN you set up yourself). The app does not connect to any developer-operated servers and does not transmit your data anywhere else.</p>
+    <p>Controllers usually present a self-signed certificate. If your operating system already trusts the controller's certificate, it is used as is. Otherwise the app remembers the certificate's public key the first time it connects ("trust on first use") and refuses to connect if that key later changes until you review both fingerprints and confirm the change. The very first connection is therefore only as trustworthy as the network you make it on. The remembered fingerprint is stored with the app's preferences on your device.</p>
     <p>One exception: the free builds downloaded from GitHub check <strong>GitHub&nbsp;(api.github.com)</strong> once a day for a newer release, so they can show a notice in Settings. This request contains no personal data or identifiers, and nothing is downloaded or installed automatically. Builds from the App&nbsp;Store or Microsoft&nbsp;Store are updated by the store itself and never perform this check.</p>
 
     <h2>Data collection</h2>

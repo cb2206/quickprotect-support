@@ -311,22 +311,32 @@ const I18N = {
       { title: "Live cameras", bullets: [
         "Every camera in a live grid, right from the menu bar.",
         "One-click focus and fullscreen viewing.",
+        "Snapshots to the clipboard or a folder, and camera audio with one-key mute.",
         "Zoom and pan within any feed.",
         "Double-click to open a camera in Protect."] },
       { title: "Control & layout", bullets: [
-        "PTZ pan and tilt with the arrow keys or an on-screen pad.",
+        "PTZ pan, tilt, and zoom with the keyboard or an on-screen pad.",
         "Named layout profiles for different rooms or scenes.",
         "Pinnable, always-on-top floating camera windows.",
         "Resizable window, drag to reorder, per-camera size and hide."] },
       { title: "Private by design", bullets: [
         "Direct local connection — no cloud, no account, no tracking.",
-        "Credentials stored securely in the macOS Keychain.",
+        "Credentials stored securely in your system's secure storage.",
+        "Self-signed controller certificates pinned on first use — you're told if one ever changes.",
         "Light, dark, and automatic themes with accent colors.",
         "Global shortcut, launch at login, free and open-source (MIT)."] }
     ],
     shotsH: "A look inside",
     changelogH: "What's new",
-    changelog: [ { version: "1.3.1", date: "August 2026", entries: [
+    changelog: [ { version: "1.4", date: "September 2026", entries: [
+      "If your controller's certificate changes (after a reinstall or replacement), QuickProtect now tells you, shows both keys to compare, and lets you trust the new one from the camera panel, a floating window or Settings.",
+      "Changing the controller address or API key reconnects on its own — no more stale cameras or old error messages until you press Refresh.",
+      "Connection errors are clearer, translated, and tell you what to check.",
+      "Linux now also runs on arm64, follows the desktop's display scaling on Wayland, and the global shortcut works again.",
+      "Floating windows move when dragged again and reconnect by themselves when a stream drops; on Windows and Linux they also keep the camera's shape and resize from any edge.",
+      "When a camera sends no video, QuickProtect names the cause instead of loading forever.",
+      "Smoother video with less CPU use on Windows and Linux, more reliable stream sessions, and a better-secured connection to the controller."] },
+    { version: "1.3.1", date: "August 2026", entries: [
       "Now also on Linux — download the app free from GitHub.",
       "Switching stream quality is now seamless — focusing a camera or going fullscreen no longer freezes the video for a moment.",
       "On Windows and Linux, the focus view now shows its keyboard shortcuts as key hints."] },
@@ -362,22 +372,32 @@ const I18N = {
       { title: "Live-Kameras", bullets: [
         "Alle Kameras im Live-Raster, direkt aus der Menüleiste.",
         "Großansicht und Vollbild mit einem Klick.",
+        "Schnappschüsse in die Zwischenablage oder einen Ordner und Kamera-Audio, per Taste stummschaltbar.",
         "Zoomen und Schwenken in jedem Feed.",
         "Doppelklicke, um eine Kamera in Protect zu öffnen."] },
       { title: "Steuerung & Layout", bullets: [
-        "PTZ schwenken und neigen mit den Pfeiltasten oder dem Steuerkreuz.",
+        "PTZ schwenken, neigen und zoomen per Tastatur oder Steuerkreuz.",
         "Benannte Layout-Profile für verschiedene Räume oder Szenen.",
         "Anheftbare, immer im Vordergrund schwebende Kamerafenster.",
         "Größenveränderbares Fenster, per Ziehen neu anordnen, Größe und Sichtbarkeit pro Kamera."] },
       { title: "Privat by Design", bullets: [
         "Direkte lokale Verbindung — keine Cloud, kein Konto, kein Tracking.",
-        "Zugangsdaten sicher im macOS-Schlüsselbund gespeichert.",
+        "Zugangsdaten sicher im sicheren Speicher deines Systems gespeichert.",
+        "Selbstsignierte Controller-Zertifikate werden beim ersten Verbinden gemerkt — ändert sich eines, erfährst du es.",
         "Helles, dunkles und automatisches Design mit Akzentfarben.",
         "Globaler Kurzbefehl, Start bei der Anmeldung, kostenlos und quelloffen (MIT)."] }
     ],
     shotsH: "Ein Blick in die App",
     changelogH: "Neuigkeiten",
-    changelog: [ { version: "1.3.1", date: "August 2026", entries: [
+    changelog: [ { version: "1.4", date: "September 2026", entries: [
+      "Wenn sich das Zertifikat deines Controllers ändert (etwa nach einer Neuinstallation oder einem Austausch), sagt QuickProtect dir das jetzt, zeigt beide Schlüssel zum Vergleich und lässt dich dem neuen in der Kameraübersicht, in einem schwebenden Fenster oder in den Einstellungen vertrauen.",
+      "Wenn du die Adresse des Controllers oder den API-Schlüssel änderst, verbindet sich QuickProtect von selbst neu – keine veralteten Kameras oder alten Fehlermeldungen mehr, bis du auf „Aktualisieren“ klickst.",
+      "Verbindungsfehler sind verständlicher, übersetzt und sagen dir, was du prüfen kannst.",
+      "Unter Linux läuft QuickProtect jetzt auch auf arm64, folgt unter Wayland der Anzeigeskalierung des Desktops, und der globale Kurzbefehl funktioniert wieder.",
+      "Schwebende Fenster lassen sich wieder durch Ziehen verschieben und verbinden sich von selbst neu, wenn ein Stream abbricht; unter Windows und Linux behalten sie außerdem die Form der Kamera und lassen sich an jeder Kante ziehen.",
+      "Sendet eine Kamera kein Video, nennt QuickProtect die Ursache, statt endlos zu laden.",
+      "Flüssigeres Video bei weniger CPU-Last unter Windows und Linux, zuverlässigere Stream-Sitzungen und eine besser abgesicherte Verbindung zum Controller."] },
+    { version: "1.3.1", date: "August 2026", entries: [
       "Jetzt auch für Linux — die App gibt es kostenlos auf GitHub.",
       "Qualitätswechsel sind jetzt nahtlos – beim Vergrößern einer Kamera oder im Vollbild friert das Video nicht mehr kurz ein.",
       "Unter Windows und Linux zeigt die Großansicht jetzt ihre Tastaturkürzel als Tastenhinweise an."] },
@@ -413,22 +433,32 @@ const I18N = {
       { title: "Cámaras en vivo", bullets: [
         "Todas las cámaras en una cuadrícula en vivo, desde la barra de menús.",
         "Ampliación y pantalla completa con un clic.",
+        "Instantáneas al portapapeles o a una carpeta, y audio de la cámara con silencio en una tecla.",
         "Zoom y desplazamiento dentro de cualquier transmisión.",
         "Doble clic para abrir una cámara en Protect."] },
       { title: "Control y diseño", bullets: [
-        "Gira e inclina las PTZ con las teclas de flecha o un panel en pantalla.",
+        "Gira, inclina y haz zoom con las PTZ desde el teclado o un panel en pantalla.",
         "Perfiles de diseño con nombre para distintas salas o escenas.",
         "Ventanas de cámara flotantes, fijables y siempre visibles.",
         "Ventana redimensionable, reordena arrastrando, tamaño y ocultación por cámara."] },
       { title: "Privacidad por diseño", bullets: [
         "Conexión local directa: sin nube, sin cuenta, sin rastreo.",
-        "Credenciales guardadas de forma segura en el Llavero de macOS.",
+        "Credenciales guardadas de forma segura en el almacenamiento seguro de tu sistema.",
+        "Certificados autofirmados del controlador fijados en la primera conexión: te avisa si alguno cambia.",
         "Temas claro, oscuro y automático con colores de acento.",
         "Atajo global, abrir al iniciar sesión, gratis y de código abierto (MIT)."] }
     ],
     shotsH: "Un vistazo a la app",
     changelogH: "Novedades",
-    changelog: [ { version: "1.3.1", date: "agosto de 2026", entries: [
+    changelog: [ { version: "1.4", date: "septiembre de 2026", entries: [
+      "Si cambia el certificado de tu controlador (tras reinstalarlo o sustituirlo), QuickProtect ahora te lo indica, muestra ambas claves para compararlas y te permite confiar en la nueva desde el panel de cámaras, una ventana flotante o los ajustes.",
+      "Al cambiar la dirección del controlador o la clave API, la conexión se restablece sola: se acabaron las cámaras desactualizadas y los mensajes de error antiguos hasta pulsar Actualizar.",
+      "Los errores de conexión son más claros, están traducidos y te dicen qué revisar.",
+      "En Linux, QuickProtect ahora también funciona en arm64, sigue el escalado de pantalla del escritorio en Wayland y el atajo global vuelve a funcionar.",
+      "Las ventanas flotantes vuelven a moverse al arrastrarlas y se reconectan solas cuando se corta una transmisión; en Windows y Linux además conservan la forma de la cámara y se redimensionan desde cualquier borde.",
+      "Cuando una cámara no envía vídeo, QuickProtect indica la causa en lugar de quedarse cargando.",
+      "Vídeo más fluido con menos uso de CPU en Windows y Linux, sesiones de transmisión más fiables y una conexión con el controlador más segura."] },
+    { version: "1.3.1", date: "agosto de 2026", entries: [
       "Ahora también en Linux — descarga la app gratis en GitHub.",
       "El cambio de calidad de la transmisión ahora es fluido: ampliar una cámara o pasar a pantalla completa ya no congela el vídeo por un momento.",
       "En Windows y Linux, la vista ampliada ahora muestra sus atajos de teclado como indicaciones de teclas."] },
@@ -464,22 +494,32 @@ const I18N = {
       { title: "Caméras en direct", bullets: [
         "Toutes les caméras dans une grille en direct, depuis la barre des menus.",
         "Agrandissement et plein écran en un clic.",
+        "Captures vers le presse-papiers ou un dossier, et audio de la caméra coupé d'une touche.",
         "Zoom et panoramique dans n'importe quel flux.",
         "Double-cliquez pour ouvrir une caméra dans Protect."] },
       { title: "Contrôle et disposition", bullets: [
-        "Panoramique et inclinaison PTZ au clavier ou avec un pavé à l'écran.",
+        "Panoramique, inclinaison et zoom PTZ au clavier ou avec un pavé à l'écran.",
         "Profils de disposition nommés pour différentes pièces ou scènes.",
         "Fenêtres de caméra flottantes, épinglables et toujours au premier plan.",
         "Fenêtre redimensionnable, réorganisation par glissement, taille et masquage par caméra."] },
       { title: "Confidentialité dès la conception", bullets: [
         "Connexion locale directe — pas de cloud, pas de compte, pas de suivi.",
-        "Identifiants stockés en sécurité dans le trousseau macOS.",
+        "Identifiants stockés en sécurité dans le stockage sécurisé de votre système.",
+        "Certificats autosignés du contrôleur mémorisés à la première connexion — vous êtes prévenu s'il change.",
         "Thèmes clair, sombre et automatique avec couleurs d'accent.",
         "Raccourci global, lancement à la connexion, gratuit et open source (MIT)."] }
     ],
     shotsH: "Un aperçu de l'app",
     changelogH: "Nouveautés",
-    changelog: [ { version: "1.3.1", date: "août 2026", entries: [
+    changelog: [ { version: "1.4", date: "septembre 2026", entries: [
+      "Si le certificat de votre contrôleur change (après une réinstallation ou un remplacement), QuickProtect vous le signale désormais, affiche les deux clés à comparer et vous permet d'approuver la nouvelle depuis le panneau des caméras, une fenêtre flottante ou les réglages.",
+      "Modifier l'adresse du contrôleur ou la clé API rétablit la connexion automatiquement — fini les caméras obsolètes et les anciens messages d'erreur jusqu'à ce que vous cliquiez sur Actualiser.",
+      "Les erreurs de connexion sont plus claires, traduites, et indiquent quoi vérifier.",
+      "Sous Linux, QuickProtect fonctionne désormais aussi sur arm64, suit la mise à l'échelle de l'affichage du bureau sous Wayland, et le raccourci global fonctionne de nouveau.",
+      "Les fenêtres flottantes se déplacent de nouveau par glisser et se reconnectent d'elles-mêmes quand un flux s'interrompt ; sous Windows et Linux, elles gardent aussi les proportions de la caméra et se redimensionnent par n'importe quel bord.",
+      "Quand une caméra n'envoie pas de vidéo, QuickProtect en indique la cause au lieu de charger indéfiniment.",
+      "Une vidéo plus fluide et moins gourmande en processeur sous Windows et Linux, des sessions de flux plus fiables et une connexion au contrôleur mieux sécurisée."] },
+    { version: "1.3.1", date: "août 2026", entries: [
       "Désormais aussi sur Linux — téléchargez l'app gratuitement sur GitHub.",
       "Le changement de qualité du flux est désormais fluide : agrandir une caméra ou passer en plein écran ne fige plus la vidéo un instant.",
       "Sous Windows et Linux, la vue agrandie affiche désormais ses raccourcis clavier sous forme de touches."] },
@@ -515,22 +555,32 @@ const I18N = {
       { title: "Telecamere dal vivo", bullets: [
         "Tutte le telecamere in una griglia dal vivo, dalla barra dei menu.",
         "Ingrandimento e schermo intero con un clic.",
+        "Istantanee negli appunti o in una cartella e audio della telecamera, silenziabile con un tasto.",
         "Zoom e spostamento all'interno di qualsiasi feed.",
         "Doppio clic per aprire una telecamera in Protect."] },
       { title: "Controllo e layout", bullets: [
-        "Brandeggio e inclinazione PTZ con i tasti freccia o un pad sullo schermo.",
+        "Brandeggio, inclinazione e zoom PTZ con la tastiera o un pad sullo schermo.",
         "Profili di layout con nome per stanze o scene diverse.",
         "Finestre delle telecamere mobili, fissabili e sempre in primo piano.",
         "Finestra ridimensionabile, riordino trascinando, dimensione e visibilità per telecamera."] },
       { title: "Privacy by design", bullets: [
         "Connessione locale diretta: niente cloud, niente account, niente tracciamento.",
-        "Credenziali salvate in modo sicuro nel Portachiavi di macOS.",
+        "Credenziali salvate in modo sicuro nell'archivio sicuro del tuo sistema.",
+        "Certificati autofirmati del controller memorizzati alla prima connessione: ti avvisa se uno cambia.",
         "Temi chiaro, scuro e automatico con colori d'accento.",
         "Scorciatoia globale, avvio all'accesso, gratuito e open source (MIT)."] }
     ],
     shotsH: "Uno sguardo all'app",
     changelogH: "Novità",
-    changelog: [ { version: "1.3.1", date: "agosto 2026", entries: [
+    changelog: [ { version: "1.4", date: "settembre 2026", entries: [
+      "Se il certificato del tuo controller cambia (dopo una reinstallazione o una sostituzione), QuickProtect ora te lo segnala, mostra entrambe le chiavi da confrontare e ti permette di fidarti di quella nuova dal pannello delle telecamere, da una finestra mobile o dalle impostazioni.",
+      "Se cambi l'indirizzo del controller o la chiave API, la connessione si ristabilisce da sola: niente più telecamere obsolete o vecchi messaggi di errore finché non premi Aggiorna.",
+      "Gli errori di connessione sono più chiari, tradotti e ti dicono cosa controllare.",
+      "Su Linux, QuickProtect ora funziona anche su arm64, segue il ridimensionamento dello schermo del desktop su Wayland e la scorciatoia globale funziona di nuovo.",
+      "Le finestre mobili si spostano di nuovo trascinandole e si riconnettono da sole quando un flusso si interrompe; su Windows e Linux mantengono anche le proporzioni della telecamera e si ridimensionano da qualsiasi bordo.",
+      "Quando una telecamera non invia video, QuickProtect ne indica la causa invece di restare in caricamento.",
+      "Video più fluido con meno uso della CPU su Windows e Linux, sessioni di streaming più affidabili e una connessione al controller più sicura."] },
+    { version: "1.3.1", date: "agosto 2026", entries: [
       "Ora anche su Linux — scarica l'app gratis da GitHub.",
       "Il cambio di qualità del flusso ora è fluido: ingrandire una telecamera o passare a schermo intero non blocca più il video per un istante.",
       "Su Windows e Linux, la vista ingrandita ora mostra le scorciatoie da tastiera come suggerimenti dei tasti."] },
@@ -566,22 +616,32 @@ const I18N = {
       { title: "Live camera's", bullets: [
         "Alle camera's in een live raster, direct vanuit de menubalk.",
         "Vergroten en volledig scherm met één klik.",
+        "Momentopnamen naar het klembord of een map, en camerageluid met één toets te dempen.",
         "Zoomen en pannen binnen elk beeld.",
         "Dubbelklik om een camera in Protect te openen."] },
       { title: "Bediening en indeling", bullets: [
-        "PTZ pannen en kantelen met de pijltoetsen of een paneel op het scherm.",
+        "PTZ pannen, kantelen en zoomen met het toetsenbord of een paneel op het scherm.",
         "Benoemde indelingsprofielen voor verschillende ruimtes of scènes.",
         "Vastzetbare, altijd-op-voorgrond zwevende cameravensters.",
         "Schaalbaar venster, herschikken door slepen, formaat en zichtbaarheid per camera."] },
       { title: "Privé door ontwerp", bullets: [
         "Directe lokale verbinding — geen cloud, geen account, geen tracking.",
-        "Inloggegevens veilig opgeslagen in de macOS-sleutelhanger.",
+        "Inloggegevens veilig opgeslagen in de beveiligde opslag van je systeem.",
+        "Zelfondertekende controllercertificaten worden bij de eerste verbinding onthouden — je hoort het als er een verandert.",
         "Lichte, donkere en automatische thema's met accentkleuren.",
         "Globale sneltoets, starten bij inloggen, gratis en open source (MIT)."] }
     ],
     shotsH: "Een blik in de app",
     changelogH: "Wat is er nieuw",
-    changelog: [ { version: "1.3.1", date: "augustus 2026", entries: [
+    changelog: [ { version: "1.4", date: "september 2026", entries: [
+      "Als het certificaat van je controller verandert (na een herinstallatie of vervanging), meldt QuickProtect dat nu, toont het beide sleutels om te vergelijken en kun je de nieuwe vertrouwen vanuit het camerapaneel, een zwevend venster of de instellingen.",
+      "Als je het adres van de controller of de API-sleutel wijzigt, maakt QuickProtect zelf opnieuw verbinding — geen verouderde camera's of oude foutmeldingen meer tot je op Vernieuw klikt.",
+      "Verbindingsfouten zijn duidelijker, vertaald en vertellen je wat je kunt controleren.",
+      "Op Linux draait QuickProtect nu ook op arm64, volgt het onder Wayland de schermschaling van de desktop en werkt de globale sneltoets weer.",
+      "Zwevende vensters zijn weer te verplaatsen door te slepen en maken zelf opnieuw verbinding als een stream wegvalt; op Windows en Linux houden ze bovendien de vorm van de camera en zijn ze vanaf elke rand te vergroten.",
+      "Als een camera geen beeld stuurt, noemt QuickProtect de oorzaak in plaats van eindeloos te laden.",
+      "Vloeiender beeld met minder CPU-gebruik op Windows en Linux, betrouwbaardere streamsessies en een beter beveiligde verbinding met de controller."] },
+    { version: "1.3.1", date: "augustus 2026", entries: [
       "Nu ook op Linux — download de app gratis op GitHub.",
       "Wisselen van streamkwaliteit gaat nu naadloos — een camera vergroten of naar volledig scherm gaan bevriest het beeld niet meer even.",
       "Op Windows en Linux toont de vergrote weergave nu de sneltoetsen als toetshints."] },
@@ -617,22 +677,32 @@ const I18N = {
       { title: "Câmeras ao vivo", bullets: [
         "Todas as câmeras em uma grade ao vivo, direto da barra de menus.",
         "Ampliação e tela cheia com um clique.",
+        "Instantâneos para a área de transferência ou uma pasta, e áudio da câmera com mudo em uma tecla.",
         "Zoom e deslocamento dentro de qualquer transmissão.",
         "Clique duplo para abrir uma câmera no Protect."] },
       { title: "Controle e layout", bullets: [
-        "Faça pan e tilt das PTZ com as teclas de seta ou um painel na tela.",
+        "Faça pan, tilt e zoom das PTZ pelo teclado ou por um painel na tela.",
         "Perfis de layout nomeados para diferentes salas ou cenas.",
         "Janelas de câmera flutuantes, fixáveis e sempre em primeiro plano.",
         "Janela redimensionável, reordene arrastando, tamanho e ocultação por câmera."] },
       { title: "Privacidade por design", bullets: [
         "Conexão local direta — sem nuvem, sem conta, sem rastreamento.",
-        "Credenciais guardadas com segurança no Chaveiro do macOS.",
+        "Credenciais guardadas com segurança no armazenamento seguro do seu sistema.",
+        "Certificados autoassinados do controlador fixados na primeira conexão — você é avisado se algum mudar.",
         "Temas claro, escuro e automático com cores de destaque.",
         "Atalho global, abrir ao fazer login, gratuito e de código aberto (MIT)."] }
     ],
     shotsH: "Um olhar pelo app",
     changelogH: "Novidades",
-    changelog: [ { version: "1.3.1", date: "agosto de 2026", entries: [
+    changelog: [ { version: "1.4", date: "setembro de 2026", entries: [
+      "Se o certificado do seu controlador mudar (após uma reinstalação ou substituição), o QuickProtect agora avisa, mostra as duas chaves para comparação e permite confiar na nova pelo painel de câmeras, por uma janela flutuante ou pelos ajustes.",
+      "Ao mudar o endereço do controlador ou a chave de API, a conexão é refeita automaticamente — sem câmeras desatualizadas nem mensagens de erro antigas até você clicar em Atualizar.",
+      "Os erros de conexão estão mais claros, traduzidos e dizem o que verificar.",
+      "No Linux, o QuickProtect agora também roda em arm64, segue a escala de exibição do desktop no Wayland e o atalho global volta a funcionar.",
+      "As janelas flutuantes voltam a se mover ao arrastar e se reconectam sozinhas quando uma transmissão cai; no Windows e no Linux elas também mantêm o formato da câmera e podem ser redimensionadas por qualquer borda.",
+      "Quando uma câmera não envia vídeo, o QuickProtect indica a causa em vez de ficar carregando.",
+      "Vídeo mais fluido com menos uso de CPU no Windows e no Linux, sessões de transmissão mais confiáveis e uma conexão com o controlador mais segura."] },
+    { version: "1.3.1", date: "agosto de 2026", entries: [
       "Agora também no Linux — baixe o app grátis no GitHub.",
       "A troca de qualidade da transmissão agora é perfeita — ampliar uma câmera ou entrar em tela cheia não congela mais o vídeo por um instante.",
       "No Windows e no Linux, a visualização ampliada agora mostra os atalhos de teclado como dicas de teclas."] },

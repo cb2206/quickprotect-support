@@ -140,7 +140,7 @@
       </div>
       <div class="faq">
         <h3>What do I need?</h3>
-        <p>A Mac running macOS 13 or later, a PC running Windows 10 (version 1809) or later, or a Linux desktop (x64) — plus a UniFi&nbsp;Protect controller reachable on your local network and an Integration API key from that controller. For PTZ control you'll also need a local admin account on the controller.</p>
+        <p>A Mac running macOS 13 or later, a PC running Windows 10 (version 1809) or later, or a Linux desktop (x64 or arm64) — plus a UniFi&nbsp;Protect controller reachable on your local network and an Integration API key from that controller. For PTZ control you'll also need a local admin account on the controller.</p>
       </div>
     </div>
   </section>
@@ -150,7 +150,7 @@
     <div class="card">
       <div class="faq">
         <h3>How do I control a PTZ camera?</h3>
-        <p>Focus a PTZ-capable camera (it shows a directional ↔ badge), then pan and tilt with the arrow keys or the on-screen pad — hold to move continuously, release to stop. PTZ requires a local admin username and password under <strong>Settings → PTZ</strong>.</p>
+        <p>Focus a PTZ-capable camera (it shows a directional ↔ badge), then pan and tilt with the arrow keys or the on-screen pad, and zoom with <strong>I</strong> and <strong>O</strong> — hold to move continuously, release to stop. PTZ requires a local admin username and password under <strong>Settings → PTZ</strong>.</p>
       </div>
       <div class="faq">
         <h3>Why does PTZ need a separate login from the API key?</h3>
@@ -158,7 +158,7 @@
       </div>
       <div class="faq">
         <h3>What are layout profiles and floating windows?</h3>
-        <p><strong>Layout profiles</strong> let you save different camera arrangements and window sizes and switch between them. <strong>Floating windows</strong> let you pin one or more cameras as always-on-top windows that stay visible while you work in other apps.</p>
+        <p><strong>Layout profiles</strong> let you save different camera arrangements and window sizes and switch between them. <strong>Floating windows</strong> let you pin one or more cameras as always-on-top windows that stay visible while you work in other apps. Drag a floating window to move it; if its stream drops, it reconnects on its own.</p>
       </div>
     </div>
   </section>
@@ -168,7 +168,11 @@
     <div class="card">
       <div class="faq">
         <h3>No cameras appear after I enter my details.</h3>
-        <p>Confirm the controller's IP address is correct and reachable from your computer (try opening <code>https://&lt;controller-ip&gt;</code> in a browser on the same network), and that the API key is valid and hasn't been revoked. QuickProtect needs to reach the controller directly on the local network.</p>
+        <p>QuickProtect shows a message saying what went wrong — for example that the controller can't be found or that the API key was rejected. Confirm the controller's IP address is correct and reachable from your computer (try opening <code>https://&lt;controller-ip&gt;</code> in a browser on the same network), and that the API key is valid and hasn't been revoked. QuickProtect needs to reach the controller directly on the local network.</p>
+      </div>
+      <div class="faq">
+        <h3>QuickProtect says my controller's certificate changed.</h3>
+        <p>UniFi controllers usually use a self-signed certificate, so QuickProtect remembers its key the first time it connects and won't connect if that key later changes. That's expected after you reinstall, reset, or replace the controller. QuickProtect shows both the remembered and the new key; compare the new one with your controller's certificate and, if they match, trust it from the camera panel, a floating window, or <strong>Settings</strong>. If you haven't changed anything on the controller, don't trust the new key — check your network first.</p>
       </div>
       <div class="faq">
         <h3>Can I use QuickProtect when I'm away from home?</h3>
@@ -176,7 +180,7 @@
       </div>
       <div class="faq">
         <h3>A stream looks frozen or won't load.</h3>
-        <p>Try clicking another camera and back, or quitting and reopening QuickProtect to re-establish the RTSP session. If a single camera never loads, check that it's online in UniFi&nbsp;Protect and that RTSP/RTSPS streaming is enabled for it.</p>
+        <p>Try clicking another camera and back, or quitting and reopening QuickProtect to re-establish the RTSP session. If a single camera never loads, check that it's online in UniFi&nbsp;Protect and that RTSP/RTSPS streaming is enabled for it. If QuickProtect reports that the camera sends no video, the controller has stopped delivering it — restarting that camera in UniFi&nbsp;Protect usually fixes it.</p>
       </div>
     </div>
   </section>
