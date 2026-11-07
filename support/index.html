@@ -136,7 +136,11 @@
       </div>
       <div class="faq">
         <h3>How do I connect to my controller?</h3>
-        <p>Open <strong>Settings</strong>, enter your controller's local <strong>IP address</strong> and an <strong>API key</strong>, and your cameras appear in the grid. Generate the API key in your UniFi&nbsp;Protect controller's settings (Control Plane → Integrations / API). The key is stored securely on your device — in the macOS Keychain on Mac, encrypted with your Windows account on Windows, or in your desktop's secret service on Linux.</p>
+        <p>Open <strong>Settings</strong>, enter your controller's local <strong>IP address</strong> and an <strong>API key</strong>, and your cameras appear in the grid. Create the API key on the console itself — in <strong>UniFi Network → Integrations → Create New API Key</strong> (on Network&nbsp;9: Settings → Control Plane → Integrations) — and copy it right away, it's shown only once. Keys from the unifi.ui.com cloud portal don't work locally. The <strong>?</strong> next to the field in Settings shows the same path. The key is stored securely on your device — in the macOS Keychain on Mac, encrypted with your Windows account on Windows, or in your desktop's secret service on Linux.</p>
+      </div>
+      <div class="faq">
+        <h3>Can I see cameras from more than one site?</h3>
+        <p>Yes. In <strong>Settings → Connection</strong>, click <strong>Add Site</strong>, give it a name, and enter that console's address and its own API key — each console issues its own keys, so one console's key doesn't work on another. Cameras from all sites share one grid, the layout profiles and floating windows, and each tile shows a small site badge. A new site's cameras appear in the profile you're in; your other profiles get them hidden, so add them there from a tile's right-click menu. If one site is unreachable, a notice names it while the others keep streaming.</p>
       </div>
       <div class="faq">
         <h3>What do I need?</h3>
@@ -150,7 +154,7 @@
     <div class="card">
       <div class="faq">
         <h3>How do I control a PTZ camera?</h3>
-        <p>Focus a PTZ-capable camera (it shows a directional ↔ badge), then pan and tilt with the arrow keys or the on-screen pad, and zoom with <strong>I</strong> and <strong>O</strong> — hold to move continuously, release to stop. PTZ requires a local admin username and password under <strong>Settings → PTZ</strong>.</p>
+        <p>Focus a PTZ-capable camera (it shows a directional ↔ badge), then pan and tilt with the arrow keys or the on-screen pad, and zoom with <strong>I</strong> and <strong>O</strong> — hold to move continuously, release to stop. PTZ requires a local account on the console: in UniFi&nbsp;OS open <strong>Admins &amp; Users → Create New</strong>, tick <strong>Restrict to Local Access Only</strong>, give it a Protect role that can control cameras, and enter its username and password under <strong>Settings → PTZ</strong> (with several sites, pick the site first).</p>
       </div>
       <div class="faq">
         <h3>Why does PTZ need a separate login from the API key?</h3>
@@ -168,7 +172,7 @@
     <div class="card">
       <div class="faq">
         <h3>No cameras appear after I enter my details.</h3>
-        <p>QuickProtect shows a message saying what went wrong — for example that the controller can't be found or that the API key was rejected. Confirm the controller's IP address is correct and reachable from your computer (try opening <code>https://&lt;controller-ip&gt;</code> in a browser on the same network), and that the API key is valid and hasn't been revoked. QuickProtect needs to reach the controller directly on the local network.</p>
+        <p>QuickProtect shows a message saying what went wrong — for example that the controller can't be found or that the API key was rejected. Confirm the controller's IP address is correct and reachable from your computer (try opening <code>https://&lt;controller-ip&gt;</code> in a browser on the same network), and that the API key is valid and hasn't been revoked. QuickProtect needs to reach the controller directly on the local network. If you entered a camera's address instead of your UniFi console's, QuickProtect tells you so.</p>
       </div>
       <div class="faq">
         <h3>QuickProtect says my controller's certificate changed.</h3>
@@ -177,6 +181,10 @@
       <div class="faq">
         <h3>Can I use QuickProtect when I'm away from home?</h3>
         <p>Yes — connect to your home network first with a VPN, then QuickProtect works as if you were at home. <a href="https://tailscale.com/" target="_blank" rel="noopener">Tailscale</a> (with subnet routing) and UniFi Teleport both work well. UniFi Protect has no public cloud streaming API, so a route to your controller's local IP is required.</p>
+      </div>
+      <div class="faq">
+        <h3>A tile shows a dimmed picture with a small spinner.</h3>
+        <p>That's a recent snapshot from your console, shown while the live stream starts. A new stream can only begin at the camera's next keyframe, which takes up to a second on most cameras and about two seconds on some wide-angle models; the live video replaces the snapshot as soon as it arrives.</p>
       </div>
       <div class="faq">
         <h3>A stream looks frozen or won't load.</h3>

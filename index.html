@@ -315,6 +315,7 @@ const I18N = {
         "Zoom and pan within any feed.",
         "Double-click to open a camera in Protect."] },
       { title: "Control & layout", bullets: [
+        "Cameras from several UniFi consoles — home and a second house, say — in one grid.",
         "PTZ pan, tilt, and zoom with the keyboard or an on-screen pad.",
         "Named layout profiles for different rooms or scenes.",
         "Pinnable, always-on-top floating camera windows.",
@@ -328,7 +329,15 @@ const I18N = {
     ],
     shotsH: "A look inside",
     changelogH: "What's new",
-    changelog: [ { version: "1.4", date: "September 2026", entries: [
+    changelog: [ { version: "1.5", date: "November 2026", entries: [
+      "More than one site: add several UniFi consoles (for example home and a second house) and see all their cameras in one grid and one layout profile. Each tile shows its site, and a site that's offline shows a notice while the others keep streaming.",
+      "While a live stream starts, its tile shows a recent snapshot instead of staying dark.",
+      "On Mac, reopening the camera panel keeps the grid on screen instead of reloading every stream.",
+      "The ? next to the API key and PTZ account fields shows where to create them on your console.",
+      "If you enter a camera's address instead of your UniFi console's, QuickProtect now tells you.",
+      "On Linux with Hyprland (e.g. Omarchy), the camera panel opens as a floating overlay that stays open until you close it, and the global shortcut is set up for you.",
+      "API keys pasted with a trailing space or line break now work."] },
+    { version: "1.4", date: "September 2026", entries: [
       "If your controller's certificate changes (after a reinstall or replacement), QuickProtect now tells you, shows both keys to compare, and lets you trust the new one from the camera panel, a floating window or Settings.",
       "Changing the controller address or API key reconnects on its own — no more stale cameras or old error messages until you press Refresh.",
       "Connection errors are clearer, translated, and tell you what to check.",
@@ -376,6 +385,7 @@ const I18N = {
         "Zoomen und Schwenken in jedem Feed.",
         "Doppelklicke, um eine Kamera in Protect zu öffnen."] },
       { title: "Steuerung & Layout", bullets: [
+        "Kameras mehrerer UniFi-Konsolen – etwa zu Hause und im Ferienhaus – in einem Raster.",
         "PTZ schwenken, neigen und zoomen per Tastatur oder Steuerkreuz.",
         "Benannte Layout-Profile für verschiedene Räume oder Szenen.",
         "Anheftbare, immer im Vordergrund schwebende Kamerafenster.",
@@ -389,7 +399,15 @@ const I18N = {
     ],
     shotsH: "Ein Blick in die App",
     changelogH: "Neuigkeiten",
-    changelog: [ { version: "1.4", date: "September 2026", entries: [
+    changelog: [ { version: "1.5", date: "November 2026", entries: [
+      "Mehrere Standorte: Füge mehrere UniFi-Konsolen hinzu (etwa zu Hause und in einem zweiten Haus) und sieh alle ihre Kameras in einem Raster und einem Layoutprofil. Jede Kachel zeigt ihren Standort, und ein Standort, der offline ist, erscheint als Hinweis, während die anderen weiterstreamen.",
+      "Während ein Livestream startet, zeigt seine Kachel einen aktuellen Schnappschuss, statt dunkel zu bleiben.",
+      "Auf dem Mac: Beim erneuten Öffnen der Kameraübersicht bleibt das Raster stehen, statt jeden Stream neu zu laden.",
+      "Das „?“ neben den Feldern für API-Schlüssel und PTZ-Konto zeigt, wo du sie auf deiner Konsole anlegst.",
+      "Gibst du statt der Adresse deiner UniFi-Konsole die einer Kamera ein, sagt QuickProtect dir das jetzt.",
+      "Unter Linux mit Hyprland (etwa Omarchy) öffnet sich die Kameraübersicht als schwebendes Overlay, das offen bleibt, bis du es schließt, und der globale Kurzbefehl wird für dich eingerichtet.",
+      "API-Schlüssel, die mit einem Leerzeichen oder Zeilenumbruch am Ende eingefügt wurden, funktionieren jetzt."] },
+    { version: "1.4", date: "September 2026", entries: [
       "Wenn sich das Zertifikat deines Controllers ändert (etwa nach einer Neuinstallation oder einem Austausch), sagt QuickProtect dir das jetzt, zeigt beide Schlüssel zum Vergleich und lässt dich dem neuen in der Kameraübersicht, in einem schwebenden Fenster oder in den Einstellungen vertrauen.",
       "Wenn du die Adresse des Controllers oder den API-Schlüssel änderst, verbindet sich QuickProtect von selbst neu – keine veralteten Kameras oder alten Fehlermeldungen mehr, bis du auf „Aktualisieren“ klickst.",
       "Verbindungsfehler sind verständlicher, übersetzt und sagen dir, was du prüfen kannst.",
@@ -437,6 +455,7 @@ const I18N = {
         "Zoom y desplazamiento dentro de cualquier transmisión.",
         "Doble clic para abrir una cámara en Protect."] },
       { title: "Control y diseño", bullets: [
+        "Cámaras de varias consolas UniFi —por ejemplo, tu casa y una segunda vivienda— en una sola cuadrícula.",
         "Gira, inclina y haz zoom con las PTZ desde el teclado o un panel en pantalla.",
         "Perfiles de diseño con nombre para distintas salas o escenas.",
         "Ventanas de cámara flotantes, fijables y siempre visibles.",
@@ -450,7 +469,15 @@ const I18N = {
     ],
     shotsH: "Un vistazo a la app",
     changelogH: "Novedades",
-    changelog: [ { version: "1.4", date: "septiembre de 2026", entries: [
+    changelog: [ { version: "1.5", date: "noviembre de 2026", entries: [
+      "Varios sitios: añade varias consolas UniFi (por ejemplo, tu casa y una segunda vivienda) y ve todas sus cámaras en una sola cuadrícula y un solo perfil de diseño. Cada mosaico muestra su sitio, y un sitio sin conexión aparece como aviso mientras los demás siguen transmitiendo.",
+      "Mientras arranca una transmisión en directo, su mosaico muestra una instantánea reciente en lugar de quedarse oscuro.",
+      "En Mac: Al volver a abrir el panel de cámaras, la cuadrícula se mantiene en pantalla en lugar de recargar cada transmisión.",
+      "El «?» junto a los campos de la clave API y la cuenta PTZ indica dónde crearlas en tu consola.",
+      "Si introduces la dirección de una cámara en lugar de la de tu consola UniFi, QuickProtect ahora te lo indica.",
+      "En Linux con Hyprland (por ejemplo, Omarchy), el panel de cámaras se abre como una superposición flotante que sigue abierta hasta que la cierras, y el atajo global se configura automáticamente.",
+      "Las claves API pegadas con un espacio o un salto de línea al final ya funcionan."] },
+    { version: "1.4", date: "septiembre de 2026", entries: [
       "Si cambia el certificado de tu controlador (tras reinstalarlo o sustituirlo), QuickProtect ahora te lo indica, muestra ambas claves para compararlas y te permite confiar en la nueva desde el panel de cámaras, una ventana flotante o los ajustes.",
       "Al cambiar la dirección del controlador o la clave API, la conexión se restablece sola: se acabaron las cámaras desactualizadas y los mensajes de error antiguos hasta pulsar Actualizar.",
       "Los errores de conexión son más claros, están traducidos y te dicen qué revisar.",
@@ -498,6 +525,7 @@ const I18N = {
         "Zoom et panoramique dans n'importe quel flux.",
         "Double-cliquez pour ouvrir une caméra dans Protect."] },
       { title: "Contrôle et disposition", bullets: [
+        "Les caméras de plusieurs consoles UniFi — la maison et une résidence secondaire, par exemple — dans une seule grille.",
         "Panoramique, inclinaison et zoom PTZ au clavier ou avec un pavé à l'écran.",
         "Profils de disposition nommés pour différentes pièces ou scènes.",
         "Fenêtres de caméra flottantes, épinglables et toujours au premier plan.",
@@ -511,7 +539,15 @@ const I18N = {
     ],
     shotsH: "Un aperçu de l'app",
     changelogH: "Nouveautés",
-    changelog: [ { version: "1.4", date: "septembre 2026", entries: [
+    changelog: [ { version: "1.5", date: "novembre 2026", entries: [
+      "Plusieurs sites : ajoutez plusieurs consoles UniFi (par exemple la maison et une résidence secondaire) et retrouvez toutes leurs caméras dans une seule grille et un seul profil de disposition. Chaque vignette indique son site, et un site hors ligne s'affiche sous forme d'avis pendant que les autres continuent de diffuser.",
+      "Pendant le démarrage d'un flux en direct, sa vignette affiche un instantané récent au lieu de rester noire.",
+      "Sur Mac : Rouvrir le panneau des caméras conserve la grille à l'écran au lieu de recharger chaque flux.",
+      "Le « ? » à côté des champs de la clé API et du compte PTZ indique où les créer sur votre console.",
+      "Si vous saisissez l'adresse d'une caméra au lieu de celle de votre console UniFi, QuickProtect vous le signale désormais.",
+      "Sous Linux avec Hyprland (par exemple Omarchy), le panneau des caméras s'ouvre en superposition flottante qui reste ouverte jusqu'à ce que vous la fermiez, et le raccourci global est configuré pour vous.",
+      "Les clés API collées avec une espace ou un saut de ligne final fonctionnent désormais."] },
+    { version: "1.4", date: "septembre 2026", entries: [
       "Si le certificat de votre contrôleur change (après une réinstallation ou un remplacement), QuickProtect vous le signale désormais, affiche les deux clés à comparer et vous permet d'approuver la nouvelle depuis le panneau des caméras, une fenêtre flottante ou les réglages.",
       "Modifier l'adresse du contrôleur ou la clé API rétablit la connexion automatiquement — fini les caméras obsolètes et les anciens messages d'erreur jusqu'à ce que vous cliquiez sur Actualiser.",
       "Les erreurs de connexion sont plus claires, traduites, et indiquent quoi vérifier.",
@@ -559,6 +595,7 @@ const I18N = {
         "Zoom e spostamento all'interno di qualsiasi feed.",
         "Doppio clic per aprire una telecamera in Protect."] },
       { title: "Controllo e layout", bullets: [
+        "Le telecamere di più console UniFi — per esempio casa e una seconda casa — in un'unica griglia.",
         "Brandeggio, inclinazione e zoom PTZ con la tastiera o un pad sullo schermo.",
         "Profili di layout con nome per stanze o scene diverse.",
         "Finestre delle telecamere mobili, fissabili e sempre in primo piano.",
@@ -572,7 +609,15 @@ const I18N = {
     ],
     shotsH: "Uno sguardo all'app",
     changelogH: "Novità",
-    changelog: [ { version: "1.4", date: "settembre 2026", entries: [
+    changelog: [ { version: "1.5", date: "novembre 2026", entries: [
+      "Più siti: aggiungi più console UniFi (per esempio casa e una seconda casa) e vedi tutte le loro telecamere in un'unica griglia e un unico profilo di layout. Ogni riquadro mostra il suo sito, e un sito offline appare come avviso mentre gli altri continuano a trasmettere.",
+      "Mentre un flusso live si avvia, il suo riquadro mostra un'istantanea recente invece di restare scuro.",
+      "Su Mac: Riaprendo il pannello delle telecamere, la griglia resta sullo schermo invece di ricaricare ogni flusso.",
+      "Il «?» accanto ai campi della chiave API e dell'account PTZ indica dove crearli sulla tua console.",
+      "Se inserisci l'indirizzo di una telecamera invece di quello della tua console UniFi, ora QuickProtect te lo segnala.",
+      "Su Linux con Hyprland (per esempio Omarchy), il pannello delle telecamere si apre come overlay fluttuante che resta aperto finché non lo chiudi, e la scorciatoia globale viene configurata per te.",
+      "Le chiavi API incollate con uno spazio o un a capo finale ora funzionano."] },
+    { version: "1.4", date: "settembre 2026", entries: [
       "Se il certificato del tuo controller cambia (dopo una reinstallazione o una sostituzione), QuickProtect ora te lo segnala, mostra entrambe le chiavi da confrontare e ti permette di fidarti di quella nuova dal pannello delle telecamere, da una finestra mobile o dalle impostazioni.",
       "Se cambi l'indirizzo del controller o la chiave API, la connessione si ristabilisce da sola: niente più telecamere obsolete o vecchi messaggi di errore finché non premi Aggiorna.",
       "Gli errori di connessione sono più chiari, tradotti e ti dicono cosa controllare.",
@@ -620,6 +665,7 @@ const I18N = {
         "Zoomen en pannen binnen elk beeld.",
         "Dubbelklik om een camera in Protect te openen."] },
       { title: "Bediening en indeling", bullets: [
+        "Camera's van meerdere UniFi-consoles – bijvoorbeeld thuis en een tweede huis – in één raster.",
         "PTZ pannen, kantelen en zoomen met het toetsenbord of een paneel op het scherm.",
         "Benoemde indelingsprofielen voor verschillende ruimtes of scènes.",
         "Vastzetbare, altijd-op-voorgrond zwevende cameravensters.",
@@ -633,7 +679,15 @@ const I18N = {
     ],
     shotsH: "Een blik in de app",
     changelogH: "Wat is er nieuw",
-    changelog: [ { version: "1.4", date: "september 2026", entries: [
+    changelog: [ { version: "1.5", date: "november 2026", entries: [
+      "Meerdere locaties: voeg meerdere UniFi-consoles toe (bijvoorbeeld thuis en een tweede huis) en zie al hun camera's in één raster en één indelingsprofiel. Elke tegel toont zijn locatie, en een locatie die offline is verschijnt als melding terwijl de andere gewoon doorstreamen.",
+      "Terwijl een livestream start, toont de tegel een recente momentopname in plaats van donker te blijven.",
+      "Op de Mac: Als je het camerapaneel opnieuw opent, blijft het raster staan in plaats van elke stream opnieuw te laden.",
+      "Het ‘?’ naast de velden voor de API-sleutel en het PTZ-account laat zien waar je ze op je console aanmaakt.",
+      "Voer je het adres van een camera in in plaats van dat van je UniFi-console, dan meldt QuickProtect dat nu.",
+      "Op Linux met Hyprland (bijvoorbeeld Omarchy) opent het camerapaneel als zwevende overlay die open blijft tot je hem sluit, en de globale sneltoets wordt voor je ingesteld.",
+      "API-sleutels die met een spatie of regeleinde aan het eind zijn geplakt, werken nu."] },
+    { version: "1.4", date: "september 2026", entries: [
       "Als het certificaat van je controller verandert (na een herinstallatie of vervanging), meldt QuickProtect dat nu, toont het beide sleutels om te vergelijken en kun je de nieuwe vertrouwen vanuit het camerapaneel, een zwevend venster of de instellingen.",
       "Als je het adres van de controller of de API-sleutel wijzigt, maakt QuickProtect zelf opnieuw verbinding — geen verouderde camera's of oude foutmeldingen meer tot je op Vernieuw klikt.",
       "Verbindingsfouten zijn duidelijker, vertaald en vertellen je wat je kunt controleren.",
@@ -681,6 +735,7 @@ const I18N = {
         "Zoom e deslocamento dentro de qualquer transmissão.",
         "Clique duplo para abrir uma câmera no Protect."] },
       { title: "Controle e layout", bullets: [
+        "Câmeras de vários consoles UniFi — por exemplo, sua casa e uma segunda casa — em uma única grade.",
         "Faça pan, tilt e zoom das PTZ pelo teclado ou por um painel na tela.",
         "Perfis de layout nomeados para diferentes salas ou cenas.",
         "Janelas de câmera flutuantes, fixáveis e sempre em primeiro plano.",
@@ -694,7 +749,15 @@ const I18N = {
     ],
     shotsH: "Um olhar pelo app",
     changelogH: "Novidades",
-    changelog: [ { version: "1.4", date: "setembro de 2026", entries: [
+    changelog: [ { version: "1.5", date: "novembro de 2026", entries: [
+      "Vários sites: adicione vários consoles UniFi (por exemplo, sua casa e uma segunda casa) e veja todas as câmeras deles em uma única grade e um único perfil de layout. Cada bloco mostra seu site, e um site offline aparece como aviso enquanto os outros continuam transmitindo.",
+      "Enquanto uma transmissão ao vivo inicia, o bloco mostra um instantâneo recente em vez de ficar escuro.",
+      "No Mac: Ao reabrir o painel de câmeras, a grade continua na tela em vez de recarregar cada transmissão.",
+      "O \"?\" ao lado dos campos da chave de API e da conta PTZ mostra onde criá-las no seu console.",
+      "Se você inserir o endereço de uma câmera em vez do seu console UniFi, o QuickProtect agora avisa.",
+      "No Linux com Hyprland (por exemplo, Omarchy), o painel de câmeras abre como uma sobreposição flutuante que fica aberta até você fechá-la, e o atalho global é configurado para você.",
+      "Chaves de API coladas com espaço ou quebra de linha no final agora funcionam."] },
+    { version: "1.4", date: "setembro de 2026", entries: [
       "Se o certificado do seu controlador mudar (após uma reinstalação ou substituição), o QuickProtect agora avisa, mostra as duas chaves para comparação e permite confiar na nova pelo painel de câmeras, por uma janela flutuante ou pelos ajustes.",
       "Ao mudar o endereço do controlador ou a chave de API, a conexão é refeita automaticamente — sem câmeras desatualizadas nem mensagens de erro antigas até você clicar em Atualizar.",
       "Os erros de conexão estão mais claros, traduzidos e dizem o que verificar.",
